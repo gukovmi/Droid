@@ -11,7 +11,6 @@ import kotlinx.android.synthetic.main.fragment_help_dialog.*
 
 
 class HelpDialogFragment : DialogFragment() {
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

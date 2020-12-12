@@ -37,12 +37,8 @@ interface PersonalAreaView : BaseView {
 class PersonalAreaFragment : Fragment(), PersonalAreaView {
     @Inject
     lateinit var presenter: PersonalAreaPresenterImpl
-
-    @Inject
-    lateinit var throwableConverter: ThrowableConverter
-
-    @Inject
-    lateinit var offsetDateTimeConverter: OffsetDateTimeConverter
+    private lateinit var throwableConverter: ThrowableConverter
+    private lateinit var offsetDateTimeConverter: OffsetDateTimeConverter
     private lateinit var loansListAdapter: LoansListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,6 +65,8 @@ class PersonalAreaFragment : Fragment(), PersonalAreaView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        throwableConverter = ThrowableConverter(view.context)
+        offsetDateTimeConverter = OffsetDateTimeConverter(view.context)
         presenter.attachView(this)
         initViews(view)
         initAdapter(view)

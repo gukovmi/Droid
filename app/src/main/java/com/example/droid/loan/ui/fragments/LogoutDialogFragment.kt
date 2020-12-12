@@ -24,9 +24,7 @@ interface LogoutView : BaseView {
 class LogoutDialogFragment : DialogFragment(), LogoutView {
     @Inject
     lateinit var presenter: LogoutPresenterImpl
-
-    @Inject
-    lateinit var throwableConverter: ThrowableConverter
+    private lateinit var throwableConverter: ThrowableConverter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +40,7 @@ class LogoutDialogFragment : DialogFragment(), LogoutView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        throwableConverter = ThrowableConverter(view.context)
         presenter.attachView(this)
         initViews()
     }

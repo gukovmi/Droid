@@ -35,8 +35,7 @@ class CreateLoanFragment : Fragment(), CreateLoanView {
     @Inject
     lateinit var presenter: CreateLoanPresenterImpl
 
-    @Inject
-    lateinit var throwableConverter: ThrowableConverter
+    private lateinit var throwableConverter: ThrowableConverter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,6 +51,7 @@ class CreateLoanFragment : Fragment(), CreateLoanView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        throwableConverter = ThrowableConverter(view.context)
         presenter.attachView(this)
         initViews()
         val loanConditions = arguments?.getParcelable<LoanConditions>("loanConditions")

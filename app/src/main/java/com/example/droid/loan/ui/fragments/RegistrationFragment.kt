@@ -29,9 +29,7 @@ interface RegistrationView : BaseView {
 class RegistrationFragment : Fragment(), RegistrationView {
     @Inject
     lateinit var presenter: RegistrationPresenterImpl
-
-    @Inject
-    lateinit var throwableConverter: ThrowableConverter
+    private lateinit var throwableConverter: ThrowableConverter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +45,7 @@ class RegistrationFragment : Fragment(), RegistrationView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        throwableConverter = ThrowableConverter(view.context)
         presenter.attachView(this)
         initViews()
     }

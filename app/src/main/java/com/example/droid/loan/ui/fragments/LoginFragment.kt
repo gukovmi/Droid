@@ -30,9 +30,7 @@ interface LoginView : BaseView {
 class LoginFragment : Fragment(), LoginView {
     @Inject
     lateinit var presenter: LoginPresenterImpl
-
-    @Inject
-    lateinit var throwableConverter: ThrowableConverter
+    private lateinit var throwableConverter: ThrowableConverter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,6 +46,7 @@ class LoginFragment : Fragment(), LoginView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        throwableConverter = ThrowableConverter(view.context)
         presenter.attachView(this)
         initViews()
     }

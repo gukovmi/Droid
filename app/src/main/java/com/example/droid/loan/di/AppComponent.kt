@@ -1,12 +1,15 @@
 package com.example.droid.loan.di
 
-import com.example.droid.loan.di.modules.*
+import com.example.droid.loan.di.modules.ContextModule
+import com.example.droid.loan.di.modules.DataModule
+import com.example.droid.loan.di.modules.DomainModule
+import com.example.droid.loan.di.modules.PresentationModule
 import com.example.droid.loan.ui.fragments.*
 import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [DataModule::class, DomainModule::class, PresentationModule::class, UIModule::class, ContextModule::class])
+@Component(modules = [DataModule::class, DomainModule::class, PresentationModule::class, ContextModule::class])
 interface AppComponent {
     fun injectStartFragment(startFragment: StartFragment)
     fun injectRegistrationFragment(registrationFragment: RegistrationFragment)

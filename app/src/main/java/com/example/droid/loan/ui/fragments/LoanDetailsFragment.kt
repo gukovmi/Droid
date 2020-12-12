@@ -31,12 +31,8 @@ interface LoanDetailsView : BaseView {
 class LoanDetailsFragment : Fragment(), LoanDetailsView {
     @Inject
     lateinit var presenter: LoanDetailsPresenterImpl
-
-    @Inject
-    lateinit var throwableConverter: ThrowableConverter
-
-    @Inject
-    lateinit var offsetDateTimeConverter: OffsetDateTimeConverter
+    private lateinit var throwableConverter: ThrowableConverter
+    private lateinit var offsetDateTimeConverter: OffsetDateTimeConverter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,6 +48,8 @@ class LoanDetailsFragment : Fragment(), LoanDetailsView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        throwableConverter = ThrowableConverter(view.context)
+        offsetDateTimeConverter = OffsetDateTimeConverter(view.context)
         presenter.attachView(this)
         initViews()
         val loanId = arguments?.getLong("loanId")

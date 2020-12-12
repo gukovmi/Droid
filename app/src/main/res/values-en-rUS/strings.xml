@@ -1,51 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="personal_area">Personal area</string>
-    <string name="registration_button" translatable="false">Register now</string>
+    <string name="registration_button">Register now</string>
     <string name="login_button">Log in</string>
-    <string name="name_field_edit_text" translatable="false">Enter your login</string>
-    <string name="password_field_edit_text" translatable="false">Enter your password</string>
-    <string name="first_name_field_edit_text" translatable="false">Enter your name</string>
-    <string name="last_name_field_edit_text" translatable="false">Please enter your last name</string>
-    <string name="phone_number_field_edit_text" translatable="false">Enter your phone number</string>
-    <string name="amount_field_edit_text" translatable="false">Enter the desired loan amount</string>
-    <string name="skip_registration_button" translatable="false">I already have an account!</string>
-    <string name="send_request_button" translatable="false">Send request</string>
-    <string name="user" translatable="false">user</string>
-    <string name="admin" translatable="false">administrator</string>
-    <string name="approved" translatable="false">Approved</string>
-    <string name="registered" translatable="false">Registered</string>
-    <string name="rejected" translatable="false">Rejected</string>
-    <string name="http_exception_400" translatable="false">A user with the same name already exists</string>
-    <string name="http_exception_401" translatable="false">First you need to log in</string>
-    <string name="http_exception_403" translatable="false">This action is not available</string>
-    <string name="http_exception_404" translatable="false">Login or password entered incorrectly</string>
-    <string name="http_exception_other" translatable="false">Sorry, an error occurred while transferring data :(</string>
-    <string name="socket_timeout_exception" translatable="false">Bad server connection, check your internet connection and try again</string>
-    <string name="unknown_host_exception" translatable="false">No internet connection</string>
-    <string name="input_output_exception" translatable="false">Sorry, there was a local error:(</string>
-    <string name="exception_other" translatable="false">Sorry, an error occured :(</string>
-    <string name="amount_is_not_valid" translatable="false">The amount entered is higher than the maximum allowable</string>
-    <string name="some_fields_are_empty" translatable="false">Fill in all the fields!</string>
-    <string name="information_details_approved_text_view" translatable="false">Congratulations! Your loan application has been approved, you can receive a payment at any branch of the organization convenient for you, or by non-cash method by filling out a special form in our application.</string>
-    <string name="information_details_rejected_text_view" translatable="false">Sorry, your loan application has been rejected.</string>
-    <string name="information_details_registered_text_view" translatable="false">Your application is still pending, you can track its status in your personal account.</string>
-    <string name="information_result_text_view" translatable="false">Your application for a loan %1$d rubles is registered under number #%2$d! You can track its status in your personal account.</string>
-    <string name="amount_loan_text_view" translatable="false">Amount: %1$d rub.</string>
-    <string name="first_name_loan_text_view" translatable="false">First name: %1$s</string>
-    <string name="last_name_loan_text_view" translatable="false">Last Name: %1$s</string>
-    <string name="id_loan_text_view" translatable="false">Application №%1$d</string>
-    <string name="state_loan_text_view" translatable="false">Application status: %1$s</string>
-    <string name="date_loan_text_view" translatable="false">Application date: %1$s</string>
-    <string name="percent_loan_text_view" translatable="false">Rate: %1$s %%/day</string>
-    <string name="period_loan_text_view" translatable="false">Term: %1$s days</string>
-    <string name="time_with_2_args_text_view" translatable="false">"Application date: %1$s \nTime: %2$s"</string>
-    <string name="time_with_1_arg_text_view" translatable="false">Application time: %1$s</string>
-    <string name="loan_conditions_text_view" translatable="false">Loan conditions provided:</string>
-    <string name="loan_title_text_view" translatable="false">Loan application</string>
-    <string name="max_amount_create_text_view" translatable="false">Maximum amount: %1$s rub.</string>
-    <string name="return_to_personal_area_button" translatable="false">Return to personal account</string>
-    <string name="authorized_user_name_text_view" translatable="false">You are logged in as %1$s</string>
+    <string name="name_field_edit_text">Enter your login</string>
+    <string name="password_field_edit_text">Enter your password</string>
+    <string name="first_name_field_edit_text">Enter your name</string>
+    <string name="last_name_field_edit_text">Please enter your last name</string>
+    <string name="phone_number_field_edit_text">Enter your phone number</string>
+    <string name="amount_field_edit_text">Enter the desired loan amount</string>
+    <string name="skip_registration_button">I already have an account!</string>
+    <string name="send_request_button">Send request</string>
+    <string name="user">user</string>
+    <string name="admin">administrator</string>
+    <string name="approved">Approved</string>
+    <string name="registered">Registered</string>
+    <string name="rejected">Rejected</string>
+    <string name="http_exception_400">A user with the same name already exists</string>
+    <string name="http_exception_401">First you need to log in</string>
+    <string name="http_exception_403">This action is not available</string>
+    <string name="http_exception_404">Login or password entered incorrectly</string>
+    <string name="http_exception_other">Sorry, an error occurred while transferring data :(</string>
+    <string name="socket_timeout_exception">Bad server connection, check your internet connection and try again</string>
+    <string name="unknown_host_exception">No internet connection</string>
+    <string name="input_output_exception">Sorry, there was a local error:(</string>
+    <string name="exception_other">Sorry, an error occurred :(</string>
+    <string name="amount_is_not_valid">The amount entered is higher than the maximum allowable</string>
+    <string name="some_fields_are_empty">Fill in all the fields!</string>
+    <string name="information_details_approved_text_view">Congratulations! Your loan application has been approved, you can receive a payment at any branch of the organization convenient for you, or by non-cash method by filling out a special form in our application.</string>
+    <string name="information_details_rejected_text_view">Sorry, your loan application has been rejected.</string>
+    <string name="information_details_registered_text_view">Your application is still pending, you can track its status in your personal account.</string>
+    <string name="information_result_text_view">Your application for a loan %1$d rubles is registered under number #%2$d! You can track its status in your personal account.</string>
+    <string name="amount_loan_text_view">Amount: %1$d rub.</string>
+    <string name="first_name_loan_text_view">First name: %1$s</string>
+    <string name="last_name_loan_text_view">Last Name: %1$s</string>
+    <string name="id_loan_text_view">Application №%1$d</string>
+    <string name="state_loan_text_view">Application status: %1$s</string>
+    <string name="date_loan_text_view">Application date: %1$s</string>
+    <string name="percent_loan_text_view">Rate: %1$s %%/day</string>
+    <string name="period_loan_text_view">Term: %1$s days</string>
+    <string name="time_with_2_args_text_view">"Application date: %1$s \nTime: %2$s"</string>
+    <string name="time_with_1_arg_text_view">Application time: %1$s</string>
+    <string name="loan_conditions_text_view">Loan conditions provided:</string>
+    <string name="loan_title_text_view">Loan application</string>
+    <string name="max_amount_create_text_view">Maximum amount: %1$s rub.</string>
+    <string name="return_to_personal_area_button">Return to personal account</string>
+    <string name="authorized_user_name_text_view">You are logged in as %1$s</string>
     <string name="registration">Registering a new account</string>
     <string name="authorization">Authorization</string>
     <string name="app_name">Droid</string>
