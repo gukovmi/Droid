@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/logoutMenuItem"
+        android:icon="@drawable/ic_baseline_exit_to_app_24"
+        android:title="@string/logout_menu_item"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/helpMenuItem"
+        android:icon="@drawable/ic_baseline_help_24"
+        android:title="@string/help_menu_item"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/languageMenuItem"
+        android:contentDescription=""
+        android:icon="@drawable/ic_baseline_language_24"
+        android:menuCategory="container"
+        android:title="@string/language_menu_item"
+        app:showAsAction="ifRoom">
+        <menu>
+            <item
+                android:id="@+id/russianLanguageMenuItem"
+                android:title="@string/russian_language_menu_item" />
+            <item
+                android:id="@+id/englishLanguageMenuItem"
+                android:title="@string/english_language_menu_item" />
+        </menu>
+    </item>
+</menu>
