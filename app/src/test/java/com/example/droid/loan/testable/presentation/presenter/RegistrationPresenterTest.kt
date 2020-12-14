@@ -3,7 +3,7 @@ package com.example.droid.loan.testable.presentation.presenter
 import com.example.droid.R
 import com.example.droid.loan.domain.entity.Auth
 import com.example.droid.loan.domain.entity.Role
-import com.example.droid.loan.domain.entity.UserEntity
+import com.example.droid.loan.domain.entity.User
 import com.example.droid.loan.domain.usecase.FieldsIsNotEmptyUseCase
 import com.example.droid.loan.domain.usecase.ReadLanguageUseCase
 import com.example.droid.loan.domain.usecase.RegistrationUseCase
@@ -59,7 +59,7 @@ class RegistrationPresenterTest {
         val name = "Max"
         val password = "999666"
         val auth = Auth(name, password)
-        val userEntity = UserEntity(name, Role.USER)
+        val userEntity = User(name, Role.USER)
         val actionId = R.id.action_registrationFragment_to_loginFragment
         `when`(registrationUseCase.invoke(auth))
             .thenReturn(Single.just(userEntity))
@@ -74,7 +74,7 @@ class RegistrationPresenterTest {
         val name = "Max"
         val password = "999666"
         val auth = Auth(name, password)
-        val userEntity = UserEntity(name, Role.USER)
+        val userEntity = User(name, Role.USER)
         `when`(registrationUseCase.invoke(auth))
             .thenReturn(Single.just(userEntity))
         val orderVerifier = inOrder(view)

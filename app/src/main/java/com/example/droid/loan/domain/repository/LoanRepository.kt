@@ -5,7 +5,7 @@ import io.reactivex.Completable
 import io.reactivex.Single
 
 interface LoanRepository {
-    fun registration(auth: Auth): Single<UserEntity>
+    fun registration(auth: Auth): Single<User>
     fun login(auth: Auth): Single<String>
     fun getLoans(token: String): Single<List<Loan>>
     fun createLoan(token: String, loanRequest: LoanRequest): Single<Loan>

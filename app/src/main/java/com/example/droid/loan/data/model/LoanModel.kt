@@ -1,12 +1,20 @@
 package com.example.droid.loan.data.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
-data class DataLoanRequest(
+@Entity(tableName = "loans")
+data class LoanModel(
     @SerializedName("amount")
     val amount: Long,
+    @SerializedName("date")
+    var date: String,
     @SerializedName("firstName")
     val firstName: String,
+    @SerializedName("id")
+    @PrimaryKey
+    val id: Long,
     @SerializedName("lastName")
     val lastName: String,
     @SerializedName("percent")
@@ -14,5 +22,7 @@ data class DataLoanRequest(
     @SerializedName("period")
     val period: Int,
     @SerializedName("phoneNumber")
-    val phoneNumber: String
+    val phoneNumber: String,
+    @SerializedName("state")
+    val state: String
 )

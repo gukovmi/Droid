@@ -3,7 +3,7 @@ package com.example.droid.loan.testable.data.datasource
 import com.example.droid.loan.data.datasource.LocalLoanDataSource
 import com.example.droid.loan.data.datasource.LocalLoanDataSourceImpl
 import com.example.droid.loan.data.db.LoansDao
-import com.example.droid.loan.data.model.DataLoan
+import com.example.droid.loan.data.model.LoanModel
 import io.reactivex.Completable
 import io.reactivex.Single
 import org.junit.Before
@@ -19,7 +19,7 @@ class LocalLoanDataSourceTest {
     @Mock
     lateinit var db: LoansDao
     private lateinit var localLoanDataSource: LocalLoanDataSource
-    private val dataLoan = DataLoan(
+    private val dataLoan = LoanModel(
         amount = 12000,
         date = "2020-12-05T08:33:11.370+00:00",
         firstName = "Max",

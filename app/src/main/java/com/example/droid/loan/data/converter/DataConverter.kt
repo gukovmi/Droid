@@ -4,59 +4,59 @@ import com.example.droid.loan.data.model.*
 import com.example.droid.loan.domain.entity.*
 
 class DataConverter {
-    fun fromDataUserEntity(dataUserEntity: DataUserEntity): UserEntity =
-        UserEntity(
-            name = dataUserEntity.name,
-            role = toRole(dataUserEntity.role)
+    fun fromDataUserEntity(userModel: UserModel): User =
+        User(
+            name = userModel.name,
+            role = toRole(userModel.role)
         )
 
-    fun toDataUserEntity(userEntity: UserEntity): DataUserEntity =
-        DataUserEntity(
-            name = userEntity.name,
-            role = fromRole(userEntity.role)
+    fun toDataUserEntity(user: User): UserModel =
+        UserModel(
+            name = user.name,
+            role = fromRole(user.role)
         )
 
-    fun fromDataAuth(dataAuth: DataAuth): Auth =
+    fun fromDataAuth(authModel: AuthModel): Auth =
         Auth(
-            name = dataAuth.name,
-            password = dataAuth.password
+            name = authModel.name,
+            password = authModel.password
         )
 
-    fun toDataAuth(auth: Auth): DataAuth =
-        DataAuth(
+    fun toDataAuth(auth: Auth): AuthModel =
+        AuthModel(
             name = auth.name,
             password = auth.password
         )
 
-    fun fromDataLoanConditions(dataLoanConditions: DataLoanConditions): LoanConditions =
+    fun fromDataLoanConditions(loanConditionsModel: LoanConditionsModel): LoanConditions =
         LoanConditions(
-            period = dataLoanConditions.period,
-            percent = dataLoanConditions.percent,
-            maxAmount = dataLoanConditions.maxAmount
+            period = loanConditionsModel.period,
+            percent = loanConditionsModel.percent,
+            maxAmount = loanConditionsModel.maxAmount
         )
 
-    fun toDataLoanConditions(loanConditions: LoanConditions): DataLoanConditions =
-        DataLoanConditions(
+    fun toDataLoanConditions(loanConditions: LoanConditions): LoanConditionsModel =
+        LoanConditionsModel(
             period = loanConditions.period,
             percent = loanConditions.percent,
             maxAmount = loanConditions.maxAmount
         )
 
-    fun fromDataLoan(dataLoan: DataLoan): Loan =
+    fun fromDataLoan(loanModel: LoanModel): Loan =
         Loan(
-            percent = dataLoan.percent,
-            period = dataLoan.period,
-            state = toState(dataLoan.state),
-            phoneNumber = dataLoan.phoneNumber,
-            lastName = dataLoan.lastName,
-            id = dataLoan.id,
-            firstName = dataLoan.firstName,
-            date = dataLoan.date,
-            amount = dataLoan.amount
+            percent = loanModel.percent,
+            period = loanModel.period,
+            state = toState(loanModel.state),
+            phoneNumber = loanModel.phoneNumber,
+            lastName = loanModel.lastName,
+            id = loanModel.id,
+            firstName = loanModel.firstName,
+            date = loanModel.date,
+            amount = loanModel.amount
         )
 
-    fun toDataLoan(loan: Loan): DataLoan =
-        DataLoan(
+    fun toDataLoan(loan: Loan): LoanModel =
+        LoanModel(
             percent = loan.percent,
             period = loan.period,
             state = fromState(loan.state),
@@ -68,18 +68,18 @@ class DataConverter {
             amount = loan.amount
         )
 
-    fun fromDataLoanRequest(dataLoanRequest: DataLoanRequest): LoanRequest =
+    fun fromDataLoanRequest(loanRequestModel: LoanRequestModel): LoanRequest =
         LoanRequest(
-            percent = dataLoanRequest.percent,
-            period = dataLoanRequest.period,
-            amount = dataLoanRequest.amount,
-            firstName = dataLoanRequest.firstName,
-            lastName = dataLoanRequest.lastName,
-            phoneNumber = dataLoanRequest.phoneNumber
+            percent = loanRequestModel.percent,
+            period = loanRequestModel.period,
+            amount = loanRequestModel.amount,
+            firstName = loanRequestModel.firstName,
+            lastName = loanRequestModel.lastName,
+            phoneNumber = loanRequestModel.phoneNumber
         )
 
-    fun toDataLoanRequest(loanRequest: LoanRequest): DataLoanRequest =
-        DataLoanRequest(
+    fun toDataLoanRequest(loanRequest: LoanRequest): LoanRequestModel =
+        LoanRequestModel(
             percent = loanRequest.percent,
             period = loanRequest.period,
             amount = loanRequest.amount,

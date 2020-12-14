@@ -7,31 +7,31 @@ import retrofit2.http.*
 interface LoanApi {
     @POST("registration")
     fun registration(
-        @Body auth: DataAuth
-    ): Single<DataUserEntity>
+        @Body authModel: AuthModel
+    ): Single<UserModel>
 
     @POST("login")
     fun login(
-        @Body auth: DataAuth
+        @Body authModel: AuthModel
     ): Single<String>
 
     @GET("loans/all")
     fun getLoans(
         @Header("Authorization") token: String
-    ): Single<List<DataLoan>>
+    ): Single<List<LoanModel>>
 
     @POST("loans/")
     fun createLoan(
         @Header("Authorization") token: String,
-        @Body loanRequest: DataLoanRequest
-    ): Single<DataLoan>
+        @Body loanRequestModel: LoanRequestModel
+    ): Single<LoanModel>
 
     @GET("loans/{id}")
     fun getLoanById(
         @Header("Authorization") token: String,
         @Path("id") id: Long
-    ): Single<DataLoan>
+    ): Single<LoanModel>
 
     @GET("loans/conditions")
-    fun getLoanConditions(@Header("Authorization") token: String): Single<DataLoanConditions>
+    fun getLoanConditions(@Header("Authorization") token: String): Single<LoanConditionsModel>
 }

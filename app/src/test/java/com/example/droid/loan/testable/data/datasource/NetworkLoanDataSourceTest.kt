@@ -19,10 +19,10 @@ class NetworkLoanDataSourceTest {
     @Mock
     lateinit var loanApiClient: LoanApi
     private lateinit var networkLoanDataSource: NetworkLoanDataSource
-    private val dataAuth = DataAuth("Max", "123")
-    private val dataUserEntity = DataUserEntity("Max", "USER")
+    private val dataAuth = AuthModel("Max", "123")
+    private val dataUserEntity = UserModel("Max", "USER")
     private val token = "42344224342232442"
-    private val dataLoanRequest = DataLoanRequest(
+    private val dataLoanRequest = LoanRequestModel(
         amount = 12000,
         firstName = "Max",
         lastName = "Ivanov",
@@ -30,7 +30,7 @@ class NetworkLoanDataSourceTest {
         period = 12,
         phoneNumber = "44242442"
     )
-    private val dataLoan = DataLoan(
+    private val dataLoan = LoanModel(
         amount = 12000,
         date = "2020-12-05T08:33:11.370+00:00",
         firstName = "Max",
@@ -137,7 +137,7 @@ class NetworkLoanDataSourceTest {
     @Test
     fun `get loan conditions successful EXPECT single loan conditions`() {
         val dataLoanConditions =
-            DataLoanConditions(
+            LoanConditionsModel(
                 period = 12,
                 percent = 13.4,
                 maxAmount = 20000

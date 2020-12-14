@@ -15,7 +15,7 @@ class LoanRepositoryImpl @Inject constructor(
     private val localLoanDataSource: LocalLoanDataSource,
     private val dataConverter: DataConverter
 ) : LoanRepository {
-    override fun registration(auth: Auth): Single<UserEntity> =
+    override fun registration(auth: Auth): Single<User> =
         networkLoanDataSource.registration(dataConverter.toDataAuth(auth))
             .map {
                 dataConverter.fromDataUserEntity(it)

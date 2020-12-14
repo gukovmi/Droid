@@ -2,7 +2,7 @@ package com.example.droid.loan.testable.domain.usecase
 
 import com.example.droid.loan.domain.entity.Auth
 import com.example.droid.loan.domain.entity.Role
-import com.example.droid.loan.domain.entity.UserEntity
+import com.example.droid.loan.domain.entity.User
 import com.example.droid.loan.domain.repository.LoanRepository
 import com.example.droid.loan.domain.usecase.RegistrationUseCase
 import io.reactivex.Single
@@ -34,7 +34,7 @@ class RegistrationUseCaseTest {
             name = "Max",
             password = "123321"
         )
-        val userEntity = UserEntity(
+        val userEntity = User(
             name = "Max",
             role = Role.USER
         )

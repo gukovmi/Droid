@@ -10,15 +10,15 @@ import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
 class DataConverterTest {
-    private val dataUserEntity = DataUserEntity(
+    private val dataUserEntity = UserModel(
         name = "Max",
         role = "USER"
     )
-    private val userEntity = UserEntity(
+    private val userEntity = User(
         name = "Max",
         role = Role.USER
     )
-    private val dataAuth = DataAuth(
+    private val dataAuth = AuthModel(
         name = "Max",
         password = "123"
     )
@@ -26,7 +26,7 @@ class DataConverterTest {
         name = "Max",
         password = "123"
     )
-    private val dataLoanConditions = DataLoanConditions(
+    private val dataLoanConditions = LoanConditionsModel(
         period = 12,
         percent = 13.4,
         maxAmount = 20000
@@ -37,7 +37,7 @@ class DataConverterTest {
             percent = 13.4,
             maxAmount = 20000
         )
-    private val dataLoan = DataLoan(
+    private val dataLoan = LoanModel(
         amount = 12000,
         date = "2020-12-05T08:33:11.370+00:00",
         firstName = "Max",
@@ -59,7 +59,7 @@ class DataConverterTest {
         phoneNumber = "44242442",
         state = State.REGISTERED
     )
-    private val dataLoanRequest = DataLoanRequest(
+    private val dataLoanRequest = LoanRequestModel(
         amount = 12000,
         firstName = "Max",
         lastName = "Ivanov",

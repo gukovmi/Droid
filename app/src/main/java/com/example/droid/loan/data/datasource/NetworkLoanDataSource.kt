@@ -7,32 +7,32 @@ import javax.inject.Inject
 
 
 interface NetworkLoanDataSource {
-    fun registration(auth: DataAuth): Single<DataUserEntity>
-    fun login(auth: DataAuth): Single<String>
-    fun getLoans(token: String): Single<List<DataLoan>>
-    fun createLoan(token: String, loanRequest: DataLoanRequest): Single<DataLoan>
-    fun getLoanById(token: String, id: Long): Single<DataLoan>
-    fun getLoanConditions(token: String): Single<DataLoanConditions>
+    fun registration(authModel: AuthModel): Single<UserModel>
+    fun login(authModel: AuthModel): Single<String>
+    fun getLoans(token: String): Single<List<LoanModel>>
+    fun createLoan(token: String, loanRequestModel: LoanRequestModel): Single<LoanModel>
+    fun getLoanById(token: String, id: Long): Single<LoanModel>
+    fun getLoanConditions(token: String): Single<LoanConditionsModel>
 }
 
 class NetworkLoanDataSourceImpl @Inject constructor(
     private val loanApiClient: LoanApi
 ) : NetworkLoanDataSource {
-    override fun registration(auth: DataAuth): Single<DataUserEntity> =
-        loanApiClient.registration(auth)
+    override fun registration(authModel: AuthModel): Single<UserModel> =
+        loanApiClient.registration(authModel)
 
-    override fun login(auth: DataAuth): Single<String> =
-        loanApiClient.login(auth)
+    override fun login(authModel: AuthModel): Single<String> =
+        loanApiClient.login(authModel)
 
-    override fun getLoans(token: String): Single<List<DataLoan>> =
+    override fun getLoans(token: String): Single<List<LoanModel>> =
         loanApiClient.getLoans(token)
 
-    override fun createLoan(token: String, loanRequest: DataLoanRequest): Single<DataLoan> =
-        loanApiClient.createLoan(token, loanRequest)
+    override fun createLoan(token: String, loanRequestModel: LoanRequestModel): Single<LoanModel> =
+        loanApiClient.createLoan(token, loanRequestModel)
 
-    override fun getLoanById(token: String, id: Long): Single<DataLoan> =
+    override fun getLoanById(token: String, id: Long): Single<LoanModel> =
         loanApiClient.getLoanById(token, id)
 
-    override fun getLoanConditions(token: String): Single<DataLoanConditions> =
+    override fun getLoanConditions(token: String): Single<LoanConditionsModel> =
         loanApiClient.getLoanConditions(token)
 }

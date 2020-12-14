@@ -36,7 +36,7 @@ class LoanRepositoryTest {
         password = "123"
     )
     private val token = "42344224342232442"
-    private val dataLoan = DataLoan(
+    private val dataLoan = LoanModel(
         amount = 12000,
         date = "2020-12-05T08:33:11.370+00:00",
         firstName = "Max",
@@ -83,15 +83,15 @@ class LoanRepositoryTest {
 
     @Test
     fun `registration successful EXPECT single user entity`() {
-        val dataUserEntity = DataUserEntity(
+        val dataUserEntity = UserModel(
             name = "Max",
             role = "USER"
         )
-        val userEntity = UserEntity(
+        val userEntity = User(
             name = "Max",
             role = Role.USER
         )
-        `when`(networkLoanDataSource.registration(any(DataAuth::class.java)))
+        `when`(networkLoanDataSource.registration(any(AuthModel::class.java)))
             .thenReturn(Single.just(dataUserEntity))
 
         val result = loanRepository
@@ -102,7 +102,7 @@ class LoanRepositoryTest {
 
     @Test
     fun `login successful EXPECT single token`() {
-        `when`(networkLoanDataSource.login(any(DataAuth::class.java)))
+        `when`(networkLoanDataSource.login(any(AuthModel::class.java)))
             .thenReturn(Single.just(token))
 
         val result = loanRepository.login(auth).test()
@@ -141,7 +141,7 @@ class LoanRepositoryTest {
     @Test
     fun `get loans at bad connection EXPECT single loans list`() {
         `when`(networkLoanDataSource.getLoans(token))
-            .thenReturn(Single.error<List<DataLoan>>(SocketTimeoutException()))
+            .thenReturn(Single.error<List<LoanModel>>(SocketTimeoutException()))
         `when`(localLoanDataSource.getLoans()).thenReturn(Single.just(dataLoansList))
 
         val result = loanRepository.getLoans(token).test()
@@ -152,7 +152,7 @@ class LoanRepositoryTest {
     @Test
     fun `get loans at bad connection EXPECT local loan data source get loans`() {
         `when`(networkLoanDataSource.getLoans(token))
-            .thenReturn(Single.error<List<DataLoan>>(SocketTimeoutException()))
+            .thenReturn(Single.error<List<LoanModel>>(SocketTimeoutException()))
         `when`(localLoanDataSource.getLoans()).thenReturn(Single.just(dataLoansList))
 
         loanRepository.getLoans(token).test()
@@ -162,7 +162,7 @@ class LoanRepositoryTest {
 
     @Test
     fun `create loan at good connection EXPECT single loan`() {
-        `when`(networkLoanDataSource.createLoan(anyString(), any(DataLoanRequest::class.java)))
+        `when`(networkLoanDataSource.createLoan(anyString(), any(LoanRequestModel::class.java)))
             .thenReturn(Single.just(dataLoan))
 
         val result = loanRepository.createLoan(token, loanRequest).test()
@@ -172,8 +172,8 @@ class LoanRepositoryTest {
 
     @Test
     fun `create loan at bad connection EXPECT exception`() {
-        `when`(networkLoanDataSource.createLoan(anyString(), any(DataLoanRequest::class.java)))
-            .thenReturn(Single.error<DataLoan>(SocketTimeoutException()))
+        `when`(networkLoanDataSource.createLoan(anyString(), any(LoanRequestModel::class.java)))
+            .thenReturn(Single.error<LoanModel>(SocketTimeoutException()))
 
         val result = loanRepository.createLoan(token, loanRequest).test()
 
@@ -193,7 +193,7 @@ class LoanRepositoryTest {
     @Test
     fun `get loan by id at bad connection EXPECT single loan`() {
         `when`(networkLoanDataSource.getLoanById(token, id))
-            .thenReturn(Single.error<DataLoan>(SocketTimeoutException()))
+            .thenReturn(Single.error<LoanModel>(SocketTimeoutException()))
         `when`(localLoanDataSource.getLoanById(id))
             .thenReturn(Single.just(dataLoan))
 
@@ -205,7 +205,7 @@ class LoanRepositoryTest {
     @Test
     fun `get loan by id at bad connection EXPECT local loan data source get loan by id`() {
         `when`(networkLoanDataSource.getLoanById(token, id))
-            .thenReturn(Single.error<DataLoan>(SocketTimeoutException()))
+            .thenReturn(Single.error<LoanModel>(SocketTimeoutException()))
         `when`(localLoanDataSource.getLoanById(id)).thenReturn(Single.just(dataLoan))
 
         loanRepository.getLoanById(token, id).test()
@@ -215,7 +215,7 @@ class LoanRepositoryTest {
 
     @Test
     fun `get loan conditions successful EXPECT single loan conditions`() {
-        val dataLoanConditions = DataLoanConditions(
+        val dataLoanConditions = LoanConditionsModel(
             period = 12,
             percent = 13.4,
             maxAmount = 20000
@@ -265,7 +265,7 @@ class LoanRepositoryTest {
     @Test
     fun `update loans at bad connection EXPECT exception`() {
         `when`(networkLoanDataSource.getLoans(token))
-            .thenReturn(Single.error<List<DataLoan>>(SocketTimeoutException()))
+            .thenReturn(Single.error<List<LoanModel>>(SocketTimeoutException()))
 
         val result = loanRepository.updateLoans(token).test()
 
