@@ -6,7 +6,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".loan.ui.fragments.HelpDialogFragment">
+    tools:context=".loan.ui.fragment.HelpDialogFragment">
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/instructionHelpTextView"

@@ -1,6 +1,6 @@
 package com.example.droid.loan.data.network
 
-import com.example.droid.loan.data.models.*
+import com.example.droid.loan.data.model.*
 import io.reactivex.Single
 import retrofit2.http.*
 

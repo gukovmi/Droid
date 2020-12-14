@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".loan.ui.fragments.LoginFragment">
+    tools:context=".loan.ui.fragment.LoginFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"

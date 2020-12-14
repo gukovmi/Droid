@@ -2,7 +2,7 @@ package com.example.droid.loan.data.db
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.example.droid.loan.data.models.DataLoan
+import com.example.droid.loan.data.model.DataLoan
 
 @Database(entities = [(DataLoan::class)], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {

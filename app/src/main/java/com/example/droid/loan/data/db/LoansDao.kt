@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.droid.loan.data.models.DataLoan
+import com.example.droid.loan.data.model.DataLoan
 import io.reactivex.Completable
 import io.reactivex.Single
 

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/startFragment"
-        android:name="com.example.droid.loan.ui.fragments.StartFragment"
+        android:name="com.example.droid.loan.ui.fragment.StartFragment"
         android:label="fragment_start"
         tools:layout="@layout/fragment_start">
         <action
@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/registrationFragment"
-        android:name="com.example.droid.loan.ui.fragments.RegistrationFragment"
+        android:name="com.example.droid.loan.ui.fragment.RegistrationFragment"
         android:label="RegistrationFragment"
         tools:layout="@layout/fragment_registration">
         <action
@@ -36,7 +36,7 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.droid.loan.ui.fragments.LoginFragment"
+        android:name="com.example.droid.loan.ui.fragment.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login">
         <action
@@ -52,7 +52,7 @@
 
     <fragment
         android:id="@+id/personalAreaFragment"
-        android:name="com.example.droid.loan.ui.fragments.PersonalAreaFragment"
+        android:name="com.example.droid.loan.ui.fragment.PersonalAreaFragment"
         android:label="fragment_personal_area"
         tools:layout="@layout/fragment_personal_area">
         <action
@@ -75,7 +75,7 @@
 
     <fragment
         android:id="@+id/loanDetailsFragment"
-        android:name="com.example.droid.loan.ui.fragments.LoanDetailsFragment"
+        android:name="com.example.droid.loan.ui.fragment.LoanDetailsFragment"
         android:label="fragment_loan_details"
         tools:layout="@layout/fragment_loan_details">
         <action
@@ -87,12 +87,12 @@
 
     <fragment
         android:id="@+id/createLoanFragment"
-        android:name="com.example.droid.loan.ui.fragments.CreateLoanFragment"
+        android:name="com.example.droid.loan.ui.fragment.CreateLoanFragment"
         android:label="fragment_create_loan"
         tools:layout="@layout/fragment_create_loan">
         <argument
             android:name="loanConditions"
-            app:argType="com.example.droid.loan.domain.entities.LoanConditions" />
+            app:argType="com.example.droid.loan.domain.entity.LoanConditions" />
         <action
             android:id="@+id/action_createLoanFragment_to_resultFragment"
             app:destination="@id/resultFragment"
@@ -107,7 +107,7 @@
 
     <fragment
         android:id="@+id/resultFragment"
-        android:name="com.example.droid.loan.ui.fragments.ResultFragment"
+        android:name="com.example.droid.loan.ui.fragment.ResultFragment"
         android:label="fragment_result"
         tools:layout="@layout/fragment_result">
         <action
@@ -115,17 +115,17 @@
             app:destination="@id/personalAreaFragment" />
         <argument
             android:name="loan"
-            app:argType="com.example.droid.loan.domain.entities.Loan" />
+            app:argType="com.example.droid.loan.domain.entity.Loan" />
     </fragment>
 
     <dialog
         android:id="@+id/helpDialogFragment"
-        android:name="com.example.droid.loan.ui.fragments.HelpDialogFragment"
+        android:name="com.example.droid.loan.ui.fragment.HelpDialogFragment"
         android:label="fragment_help_dialog"
         tools:layout="@layout/fragment_help_dialog" />
     <dialog
         android:id="@+id/logoutDialogFragment"
-        android:name="com.example.droid.loan.ui.fragments.LogoutDialogFragment"
+        android:name="com.example.droid.loan.ui.fragment.LogoutDialogFragment"
         android:label="fragment_logout_dialog"
         tools:layout="@layout/fragment_logout_dialog">
         <action

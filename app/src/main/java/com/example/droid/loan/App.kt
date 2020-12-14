@@ -2,9 +2,9 @@ package com.example.droid.loan
 
 import android.app.Application
 import android.content.Context
-import com.example.droid.loan.di.AppComponent
-import com.example.droid.loan.di.DaggerAppComponent
-import com.example.droid.loan.di.modules.ContextModule
+import com.example.droid.loan.di.component.AppComponent
+import com.example.droid.loan.di.component.DaggerAppComponent
+import com.example.droid.loan.di.module.ContextModule
 
 class App : Application() {
     companion object {

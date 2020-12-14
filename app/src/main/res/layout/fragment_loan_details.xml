@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".loan.ui.fragments.CreateLoanFragment">
+    tools:context=".loan.ui.fragment.CreateLoanFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -28,7 +28,7 @@
         android:gravity="center"
         android:orientation="vertical"
         android:padding="16dp"
-        tools:context=".loan.ui.fragments.LoanDetailsFragment">
+        tools:context=".loan.ui.fragment.LoanDetailsFragment">
 
         <ProgressBar
             android:id="@+id/loadingLoanDetailsProgressBar"
