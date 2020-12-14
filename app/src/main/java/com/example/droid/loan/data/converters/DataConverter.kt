@@ -1,4 +1,4 @@
-package com.example.droid.loan.domain.converters
+package com.example.droid.loan.data.converters
 
 import com.example.droid.loan.data.models.*
 import com.example.droid.loan.domain.entities.*

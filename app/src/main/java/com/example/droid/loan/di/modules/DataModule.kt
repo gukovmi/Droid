@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.content.res.Resources
 import androidx.room.Room
+import com.example.droid.loan.data.converters.DataConverter
 import com.example.droid.loan.data.data_sources.*
 import com.example.droid.loan.data.db.AppDatabase
 import com.example.droid.loan.data.db.LoansDao
@@ -11,7 +12,6 @@ import com.example.droid.loan.data.network.LoanApi
 import com.example.droid.loan.data.network.ValueStore
 import com.example.droid.loan.data.repositories.InfoRepositoryImpl
 import com.example.droid.loan.data.repositories.LoanRepositoryImpl
-import com.example.droid.loan.domain.converters.DataConverter
 import com.example.droid.loan.domain.repositories.InfoRepository
 import com.example.droid.loan.domain.repositories.LoanRepository
 import com.google.gson.GsonBuilder

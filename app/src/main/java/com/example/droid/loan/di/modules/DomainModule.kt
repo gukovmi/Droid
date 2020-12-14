@@ -1,6 +1,6 @@
 package com.example.droid.loan.di.modules
 
-import com.example.droid.loan.domain.converters.DataConverter
+import com.example.droid.loan.data.converters.DataConverter
 import com.example.droid.loan.domain.repositories.InfoRepository
 import com.example.droid.loan.domain.repositories.LoanRepository
 import com.example.droid.loan.domain.use_cases.*

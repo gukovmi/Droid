@@ -1,7 +1,7 @@
-package com.example.droid.loan.testable.domain.converters
+package com.example.droid.loan.testable.data.converters
 
+import com.example.droid.loan.data.converters.DataConverter
 import com.example.droid.loan.data.models.*
-import com.example.droid.loan.domain.converters.DataConverter
 import com.example.droid.loan.domain.entities.*
 import org.junit.Assert.assertEquals
 import org.junit.Test

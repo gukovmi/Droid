@@ -1,8 +1,8 @@
 package com.example.droid.loan.data.repositories
 
+import com.example.droid.loan.data.converters.DataConverter
 import com.example.droid.loan.data.data_sources.LocalLoanDataSource
 import com.example.droid.loan.data.data_sources.NetworkLoanDataSource
-import com.example.droid.loan.domain.converters.DataConverter
 import com.example.droid.loan.domain.entities.*
 import com.example.droid.loan.domain.repositories.LoanRepository
 import io.reactivex.Completable
