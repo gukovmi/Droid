@@ -26,8 +26,8 @@ interface CreateLoanView : BaseView {
     fun showEmptyFieldsWarning()
     fun showExceedingMaxAmountWarning()
     fun showIsNotInitializedVariableWarning()
-    fun startCreateLoanLoading()
-    fun finishCreateLoanLoading()
+    fun startLoading()
+    fun finishLoading()
     fun recreateRequireActivity()
 }
 
@@ -178,11 +178,11 @@ class CreateLoanFragment : Fragment(), CreateLoanView {
         showToast(getString(R.string.variable_is_not_initialized))
     }
 
-    override fun startCreateLoanLoading() {
+    override fun startLoading() {
         loadingCreateLoanProgressBar.visibility = View.VISIBLE
     }
 
-    override fun finishCreateLoanLoading() {
+    override fun finishLoading() {
         loadingCreateLoanProgressBar.visibility = View.GONE
     }
 

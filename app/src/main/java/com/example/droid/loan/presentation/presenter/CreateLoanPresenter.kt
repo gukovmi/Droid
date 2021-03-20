@@ -77,7 +77,7 @@ class CreateLoanPresenterImpl @Inject constructor(
             this.loanConditions.period,
             phoneNumber
         )
-        view?.startCreateLoanLoading()
+        view?.startLoading()
         createLoanUseCase(readTokenUseCase(), loanRequest)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -85,13 +85,13 @@ class CreateLoanPresenterImpl @Inject constructor(
                 val bundle = Bundle().apply {
                     putParcelable("loan", it)
                 }
-                view?.finishCreateLoanLoading()
+                view?.finishLoading()
                 view?.navigateToWithBundle(
                     R.id.action_createLoanFragment_to_resultFragment,
                     bundle
                 )
             }, {
-                view?.finishCreateLoanLoading()
+                view?.finishLoading()
                 view?.showError(it)
             }).untilDestroy()
     }

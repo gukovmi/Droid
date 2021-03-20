@@ -142,8 +142,8 @@ class CreateLoanPresenterTest {
             phoneNumber = phoneNumber
         )
 
-        orderVerifier.verify(view).startCreateLoanLoading()
-        orderVerifier.verify(view).finishCreateLoanLoading()
+        orderVerifier.verify(view).startLoading()
+        orderVerifier.verify(view).finishLoading()
     }
 
     @Test
@@ -175,8 +175,8 @@ class CreateLoanPresenterTest {
             phoneNumber = phoneNumber
         )
 
-        orderVerifier.verify(view).startCreateLoanLoading()
-        orderVerifier.verify(view).finishCreateLoanLoading()
+        orderVerifier.verify(view).startLoading()
+        orderVerifier.verify(view).finishLoading()
     }
 
 
