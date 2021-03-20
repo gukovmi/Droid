@@ -36,7 +36,7 @@ class PersonalAreaPresenterImpl @Inject constructor(
     private val readLanguageUseCase: ReadLanguageUseCase
 ) : PersonalAreaPresenter, BasePresenter<PersonalAreaView>() {
     override fun getLoanConditions() {
-        view?.startLoanConditionsLoading()
+        view?.startLoading()
         getLoansConditionsUseCase(readTokenUseCase())
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -47,41 +47,41 @@ class PersonalAreaPresenterImpl @Inject constructor(
                         it
                     )
                 }
-                view?.finishLoanConditionsLoading()
+                view?.finishLoading()
                 view?.navigateToWithBundle(
                     R.id.action_personalAreaFragment_to_createLoanFragment,
                     bundle
                 )
             }, {
-                view?.finishLoanConditionsLoading()
+                view?.finishLoading()
                 view?.showError(it)
             }).untilDestroy()
     }
 
     override fun getLoans() {
-        view?.startLoansLoading()
+        view?.startLoading()
         getLoansUseCase(readTokenUseCase())
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ loansList ->
-                view?.finishLoansLoading()
+                view?.finishLoading()
                 view?.showLoans(loansList)
             }, {
-                view?.finishLoansLoading()
+                view?.finishLoading()
                 view?.showError(it)
             }).untilDestroy()
     }
 
     override fun updateLoans() {
-        view?.startLoansLoading()
+        view?.startLoading()
         updateLoansUseCase(readTokenUseCase())
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                view?.finishLoansLoading()
+                view?.finishLoading()
                 view?.showLoans(it)
             }, {
-                view?.finishLoansLoading()
+                view?.finishLoading()
                 view?.showError(it)
             }).untilDestroy()
     }

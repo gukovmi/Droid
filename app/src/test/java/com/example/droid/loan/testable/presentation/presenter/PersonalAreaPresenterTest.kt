@@ -120,8 +120,8 @@ class PersonalAreaPresenterTest {
 
         presenter.getLoanConditions()
 
-        orderVerifier.verify(view).startLoanConditionsLoading()
-        orderVerifier.verify(view).finishLoanConditionsLoading()
+        orderVerifier.verify(view).startLoading()
+        orderVerifier.verify(view).finishLoading()
     }
 
     @Test
@@ -158,8 +158,8 @@ class PersonalAreaPresenterTest {
 
         presenter.getLoans()
 
-        orderVerifier.verify(view).startLoansLoading()
-        orderVerifier.verify(view).finishLoansLoading()
+        orderVerifier.verify(view).startLoading()
+        orderVerifier.verify(view).finishLoading()
     }
 
     @Test
@@ -184,8 +184,8 @@ class PersonalAreaPresenterTest {
 
         presenter.getLoans()
 
-        orderVerifier.verify(view).startLoansLoading()
-        orderVerifier.verify(view).finishLoansLoading()
+        orderVerifier.verify(view).startLoading()
+        orderVerifier.verify(view).finishLoading()
     }
 
     @Test
@@ -210,8 +210,8 @@ class PersonalAreaPresenterTest {
 
         presenter.updateLoans()
 
-        orderVerifier.verify(view).startLoansLoading()
-        orderVerifier.verify(view).finishLoansLoading()
+        orderVerifier.verify(view).startLoading()
+        orderVerifier.verify(view).finishLoading()
     }
 
     @Test
@@ -236,8 +236,8 @@ class PersonalAreaPresenterTest {
 
         presenter.updateLoans()
 
-        orderVerifier.verify(view).startLoansLoading()
-        orderVerifier.verify(view).finishLoansLoading()
+        orderVerifier.verify(view).startLoading()
+        orderVerifier.verify(view).finishLoading()
     }
 
     @Test

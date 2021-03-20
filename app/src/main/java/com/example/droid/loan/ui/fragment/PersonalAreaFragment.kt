@@ -24,10 +24,8 @@ import javax.inject.Inject
 interface PersonalAreaView : BaseView {
     fun navigateToWithBundle(id: Int, bundle: Bundle)
     fun showLoans(loansList: List<Loan>)
-    fun startLoansLoading()
-    fun finishLoansLoading()
-    fun startLoanConditionsLoading()
-    fun finishLoanConditionsLoading()
+    fun startLoading()
+    fun finishLoading()
     fun navigateTo(id: Int)
     fun showError(throwable: Throwable)
     fun showEmptyFieldsWarning()
@@ -149,20 +147,12 @@ class PersonalAreaFragment : Fragment(), PersonalAreaView {
         showToast(getString(R.string.some_fields_are_empty))
     }
 
-    override fun startLoansLoading() {
-        loadingLoansListProgressBar.visibility = View.VISIBLE
+    override fun startLoading() {
+        loadingProgressBarPersonalArea.visibility = View.VISIBLE
     }
 
-    override fun finishLoansLoading() {
-        loadingLoansListProgressBar.visibility = View.GONE
-    }
-
-    override fun startLoanConditionsLoading() {
-        loadingLoanConditionsProgressBar.visibility = View.VISIBLE
-    }
-
-    override fun finishLoanConditionsLoading() {
-        loadingLoanConditionsProgressBar.visibility = View.GONE
+    override fun finishLoading() {
+        loadingProgressBarPersonalArea.visibility = View.GONE
     }
 
     override fun recreateRequireActivity() {
