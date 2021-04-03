@@ -5,6 +5,10 @@ import com.example.droid.R
 import com.example.droid.loan.domain.entity.LoanConditions
 import com.example.droid.loan.domain.entity.LoanRequest
 import com.example.droid.loan.domain.usecase.*
+import com.example.droid.loan.domain.usecase.info.ReadLanguageUseCase
+import com.example.droid.loan.domain.usecase.info.ReadTokenUseCase
+import com.example.droid.loan.domain.usecase.info.WriteLanguageUseCase
+import com.example.droid.loan.domain.usecase.loan.CreateLoanUseCase
 import com.example.droid.loan.presentation.base.BasePresenter
 import com.example.droid.loan.ui.fragment.CreateLoanView
 import io.reactivex.android.schedulers.AndroidSchedulers

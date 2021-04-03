@@ -1,7 +1,7 @@
 package com.example.droid.loan.testable.presentation.presenter
 
 import com.example.droid.R
-import com.example.droid.loan.domain.usecase.ReadTokenUseCase
+import com.example.droid.loan.domain.usecase.info.ReadTokenUseCase
 import com.example.droid.loan.presentation.presenter.StartPresenterImpl
 import com.example.droid.loan.ui.fragment.StartView
 import org.junit.Before

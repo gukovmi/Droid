@@ -3,9 +3,9 @@ package com.example.droid.loan.presentation.presenter
 import com.example.droid.R
 import com.example.droid.loan.domain.entity.Auth
 import com.example.droid.loan.domain.usecase.FieldsIsNotEmptyUseCase
-import com.example.droid.loan.domain.usecase.ReadLanguageUseCase
-import com.example.droid.loan.domain.usecase.RegistrationUseCase
-import com.example.droid.loan.domain.usecase.WriteLanguageUseCase
+import com.example.droid.loan.domain.usecase.info.ReadLanguageUseCase
+import com.example.droid.loan.domain.usecase.auth.RegistrationUseCase
+import com.example.droid.loan.domain.usecase.info.WriteLanguageUseCase
 import com.example.droid.loan.presentation.base.BasePresenter
 import com.example.droid.loan.ui.fragment.RegistrationView
 import io.reactivex.android.schedulers.AndroidSchedulers

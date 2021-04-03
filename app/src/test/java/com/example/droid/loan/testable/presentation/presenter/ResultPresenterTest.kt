@@ -1,8 +1,8 @@
 package com.example.droid.loan.testable.presentation.presenter
 
 import com.example.droid.R
-import com.example.droid.loan.domain.usecase.ReadLanguageUseCase
-import com.example.droid.loan.domain.usecase.WriteLanguageUseCase
+import com.example.droid.loan.domain.usecase.info.ReadLanguageUseCase
+import com.example.droid.loan.domain.usecase.info.WriteLanguageUseCase
 import com.example.droid.loan.presentation.presenter.ResultPresenterImpl
 import com.example.droid.loan.ui.fragment.ResultView
 import org.junit.Before

@@ -4,6 +4,11 @@ import android.os.Bundle
 import com.example.droid.R
 import com.example.droid.loan.domain.entity.Auth
 import com.example.droid.loan.domain.usecase.*
+import com.example.droid.loan.domain.usecase.auth.LoginUseCase
+import com.example.droid.loan.domain.usecase.info.ReadLanguageUseCase
+import com.example.droid.loan.domain.usecase.info.WriteLanguageUseCase
+import com.example.droid.loan.domain.usecase.info.WriteNameUseCase
+import com.example.droid.loan.domain.usecase.info.WriteTokenUseCase
 import com.example.droid.loan.presentation.base.BasePresenter
 import com.example.droid.loan.ui.fragment.LoginView
 import io.reactivex.android.schedulers.AndroidSchedulers

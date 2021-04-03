@@ -1,10 +1,10 @@
 package com.example.droid.loan.presentation.presenter
 
 import com.example.droid.R
-import com.example.droid.loan.domain.usecase.GetLoanByIdUseCase
-import com.example.droid.loan.domain.usecase.ReadLanguageUseCase
-import com.example.droid.loan.domain.usecase.ReadTokenUseCase
-import com.example.droid.loan.domain.usecase.WriteLanguageUseCase
+import com.example.droid.loan.domain.usecase.loan.GetLoanByIdUseCase
+import com.example.droid.loan.domain.usecase.info.ReadLanguageUseCase
+import com.example.droid.loan.domain.usecase.info.ReadTokenUseCase
+import com.example.droid.loan.domain.usecase.info.WriteLanguageUseCase
 import com.example.droid.loan.presentation.base.BasePresenter
 import com.example.droid.loan.ui.fragment.LoanDetailsView
 import io.reactivex.android.schedulers.AndroidSchedulers

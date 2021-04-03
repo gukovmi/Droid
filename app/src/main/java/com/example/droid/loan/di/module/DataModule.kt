@@ -5,13 +5,23 @@ import android.content.SharedPreferences
 import android.content.res.Resources
 import androidx.room.Room
 import com.example.droid.loan.data.converter.DataConverter
-import com.example.droid.loan.data.datasource.*
+import com.example.droid.loan.data.datasource.auth.NetworkAuthDataSource
+import com.example.droid.loan.data.datasource.auth.NetworkAuthDataSourceImpl
+import com.example.droid.loan.data.datasource.info.SharedPreferencesDataSource
+import com.example.droid.loan.data.datasource.info.SharedPreferencesDataSourceImpl
+import com.example.droid.loan.data.datasource.loan.LocalLoanDataSource
+import com.example.droid.loan.data.datasource.loan.LocalLoanDataSourceImpl
+import com.example.droid.loan.data.datasource.loan.NetworkLoanDataSource
+import com.example.droid.loan.data.datasource.loan.NetworkLoanDataSourceImpl
 import com.example.droid.loan.data.db.AppDatabase
 import com.example.droid.loan.data.db.LoansDao
-import com.example.droid.loan.data.network.LoanApi
 import com.example.droid.loan.data.network.ValueStore
-import com.example.droid.loan.data.repository.InfoRepositoryImpl
-import com.example.droid.loan.data.repository.LoanRepositoryImpl
+import com.example.droid.loan.data.network.api.AuthApi
+import com.example.droid.loan.data.network.api.LoanApi
+import com.example.droid.loan.data.repository.auth.AuthRepositoryImpl
+import com.example.droid.loan.data.repository.info.InfoRepositoryImpl
+import com.example.droid.loan.data.repository.loan.LoanRepositoryImpl
+import com.example.droid.loan.domain.repository.AuthRepository
 import com.example.droid.loan.domain.repository.InfoRepository
 import com.example.droid.loan.domain.repository.LoanRepository
 import com.google.gson.GsonBuilder
@@ -27,6 +37,17 @@ import javax.inject.Singleton
 
 @Module
 class DataModule {
+    @Singleton
+    @Provides
+    fun provideAuthRepository(
+        networkAuthDataSource: NetworkAuthDataSource,
+        dataConverter: DataConverter
+    ): AuthRepository =
+        AuthRepositoryImpl(
+            networkAuthDataSource,
+            dataConverter
+        )
+
     @Singleton
     @Provides
     fun provideLoanRepository(
@@ -50,6 +71,12 @@ class DataModule {
     fun provideSharedPreferencesDataSource(sharedPreferences: SharedPreferences): SharedPreferencesDataSource =
         SharedPreferencesDataSourceImpl(sharedPreferences)
 
+
+    @Singleton
+    @Provides
+    fun provideNetworkAuthDataSource(authApiClient: AuthApi): NetworkAuthDataSource =
+        NetworkAuthDataSourceImpl(authApiClient)
+
     @Singleton
     @Provides
     fun provideNetworkLoanDataSource(loanApiClient: LoanApi): NetworkLoanDataSource =
@@ -67,6 +94,26 @@ class DataModule {
             context,
             AppDatabase::class.java, "loans"
         ).build().loansDao()
+
+    @Singleton
+    @Provides
+    fun provideAuthApiClient(): AuthApi {
+        val interceptor = HttpLoggingInterceptor()
+        interceptor.level = HttpLoggingInterceptor.Level.BODY
+        val client = OkHttpClient.Builder()
+            .addInterceptor(interceptor)
+            .build()
+        val gson = GsonBuilder().setLenient().create()
+        val retrofit = Retrofit.Builder()
+            .baseUrl(ValueStore.BASE_URL)
+            .addConverterFactory(ScalarsConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .client(client)
+            .build()
+
+        return retrofit.create(AuthApi::class.java)
+    }
 
     @Singleton
     @Provides

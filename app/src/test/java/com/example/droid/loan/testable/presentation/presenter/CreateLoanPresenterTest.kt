@@ -7,6 +7,10 @@ import com.example.droid.loan.domain.entity.LoanConditions
 import com.example.droid.loan.domain.entity.LoanRequest
 import com.example.droid.loan.domain.entity.State
 import com.example.droid.loan.domain.usecase.*
+import com.example.droid.loan.domain.usecase.info.ReadLanguageUseCase
+import com.example.droid.loan.domain.usecase.info.ReadTokenUseCase
+import com.example.droid.loan.domain.usecase.info.WriteLanguageUseCase
+import com.example.droid.loan.domain.usecase.loan.CreateLoanUseCase
 import com.example.droid.loan.presentation.presenter.CreateLoanPresenterImpl
 import com.example.droid.loan.testrule.SchedulersTestRule
 import com.example.droid.loan.ui.fragment.CreateLoanView

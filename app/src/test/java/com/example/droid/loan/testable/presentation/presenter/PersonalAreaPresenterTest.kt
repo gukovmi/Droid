@@ -5,7 +5,10 @@ import com.example.droid.R
 import com.example.droid.loan.domain.entity.Loan
 import com.example.droid.loan.domain.entity.LoanConditions
 import com.example.droid.loan.domain.entity.State
-import com.example.droid.loan.domain.usecase.*
+import com.example.droid.loan.domain.usecase.info.*
+import com.example.droid.loan.domain.usecase.loan.GetLoanConditionsUseCase
+import com.example.droid.loan.domain.usecase.loan.GetLoansUseCase
+import com.example.droid.loan.domain.usecase.loan.UpdateLoansUseCase
 import com.example.droid.loan.presentation.presenter.PersonalAreaPresenterImpl
 import com.example.droid.loan.testrule.SchedulersTestRule
 import com.example.droid.loan.ui.fragment.PersonalAreaView

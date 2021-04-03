@@ -1,8 +1,8 @@
 package com.example.droid.loan.testable.presentation.presenter
 
 import com.example.droid.R
-import com.example.droid.loan.domain.usecase.ClearLoansUseCase
-import com.example.droid.loan.domain.usecase.WriteTokenUseCase
+import com.example.droid.loan.domain.usecase.loan.ClearLoansUseCase
+import com.example.droid.loan.domain.usecase.info.WriteTokenUseCase
 import com.example.droid.loan.presentation.presenter.LogoutPresenterImpl
 import com.example.droid.loan.testrule.SchedulersTestRule
 import com.example.droid.loan.ui.fragment.LogoutView

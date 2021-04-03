@@ -2,7 +2,10 @@ package com.example.droid.loan.presentation.presenter
 
 import android.os.Bundle
 import com.example.droid.R
-import com.example.droid.loan.domain.usecase.*
+import com.example.droid.loan.domain.usecase.info.*
+import com.example.droid.loan.domain.usecase.loan.GetLoanConditionsUseCase
+import com.example.droid.loan.domain.usecase.loan.GetLoansUseCase
+import com.example.droid.loan.domain.usecase.loan.UpdateLoansUseCase
 import com.example.droid.loan.presentation.base.BasePresenter
 import com.example.droid.loan.ui.fragment.PersonalAreaView
 import io.reactivex.android.schedulers.AndroidSchedulers

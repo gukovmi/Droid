@@ -1,6 +1,10 @@
 package com.example.droid.loan.di.module
 
 import com.example.droid.loan.domain.usecase.*
+import com.example.droid.loan.domain.usecase.auth.LoginUseCase
+import com.example.droid.loan.domain.usecase.auth.RegistrationUseCase
+import com.example.droid.loan.domain.usecase.info.*
+import com.example.droid.loan.domain.usecase.loan.*
 import com.example.droid.loan.presentation.presenter.*
 import dagger.Module
 import dagger.Provides

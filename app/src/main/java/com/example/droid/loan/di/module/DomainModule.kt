@@ -1,24 +1,29 @@
 package com.example.droid.loan.di.module
 
 import com.example.droid.loan.data.converter.DataConverter
+import com.example.droid.loan.domain.repository.AuthRepository
 import com.example.droid.loan.domain.repository.InfoRepository
 import com.example.droid.loan.domain.repository.LoanRepository
 import com.example.droid.loan.domain.usecase.*
+import com.example.droid.loan.domain.usecase.auth.LoginUseCase
+import com.example.droid.loan.domain.usecase.auth.RegistrationUseCase
+import com.example.droid.loan.domain.usecase.info.*
+import com.example.droid.loan.domain.usecase.loan.*
 import dagger.Module
 import dagger.Provides
 
 @Module
 class DomainModule {
     @Provides
-    fun provideRegistrationUseCase(loanRepository: LoanRepository): RegistrationUseCase =
+    fun provideRegistrationUseCase(authRepository: AuthRepository): RegistrationUseCase =
         RegistrationUseCase(
-            loanRepository
+            authRepository
         )
 
     @Provides
-    fun provideLoginUseCase(loanRepository: LoanRepository): LoginUseCase =
+    fun provideLoginUseCase(authRepository: AuthRepository): LoginUseCase =
         LoginUseCase(
-            loanRepository
+            authRepository
         )
 
     @Provides
