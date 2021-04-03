@@ -26,15 +26,15 @@ class LoanDetailsPresenterImpl @Inject constructor(
 ) : LoanDetailsPresenter,
     BasePresenter<LoanDetailsView>() {
     override fun getLoanById(id: Long) {
-        view?.startLoanLoading()
+        view?.startLoading()
         getLoanByIdUseCase(readTokenUseCase(), id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ loan ->
-                view?.finishLoanLoading()
+                view?.finishLoading()
                 view?.showLoanDetails(loan)
             }, {
-                view?.finishLoanLoading()
+                view?.finishLoading()
                 view?.showError(it)
             }).untilDestroy()
     }

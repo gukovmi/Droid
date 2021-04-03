@@ -23,8 +23,8 @@ interface LoanDetailsView : BaseView {
     fun showLoanDetails(loan: Loan)
     fun navigateTo(id: Int)
     fun showError(throwable: Throwable)
-    fun startLoanLoading()
-    fun finishLoanLoading()
+    fun startLoading()
+    fun finishLoading()
     fun recreateRequireActivity()
 }
 
@@ -136,11 +136,11 @@ class LoanDetailsFragment : Fragment(), LoanDetailsView {
         showToast(throwableConverter.cast(throwable))
     }
 
-    override fun startLoanLoading() {
+    override fun startLoading() {
         loadingLoanDetailsProgressBar.visibility = View.VISIBLE
     }
 
-    override fun finishLoanLoading() {
+    override fun finishLoading() {
         loadingLoanDetailsProgressBar.visibility = View.GONE
     }
 
@@ -152,5 +152,4 @@ class LoanDetailsFragment : Fragment(), LoanDetailsView {
         if (this::presenter.isInitialized) presenter.onDestroy()
         super.onDestroy()
     }
-
 }

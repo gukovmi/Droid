@@ -89,8 +89,8 @@ class LoanDetailsPresenterTest {
 
         presenter.getLoanById(loan.id)
 
-        orderVerifier.verify(view).startLoanLoading()
-        orderVerifier.verify(view).finishLoanLoading()
+        orderVerifier.verify(view).startLoading()
+        orderVerifier.verify(view).finishLoading()
     }
 
     @Test
@@ -115,8 +115,8 @@ class LoanDetailsPresenterTest {
 
         presenter.getLoanById(loan.id)
 
-        orderVerifier.verify(view).startLoanLoading()
-        orderVerifier.verify(view).finishLoanLoading()
+        orderVerifier.verify(view).startLoading()
+        orderVerifier.verify(view).finishLoading()
     }
 
 
