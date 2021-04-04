@@ -16,9 +16,11 @@
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/topAppBarPersonalArea"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:menu="@menu/top_app_bar" />
+            app:menu="@menu/top_app_bar"
+            app:title="@string/personal_area" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -31,13 +33,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/topAppBarLayoutPersonalArea">
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/personal_area"
-            android:textAppearance="?attr/textAppearanceHeadline6" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/authorizedUserNameTextView"
