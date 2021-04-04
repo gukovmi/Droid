@@ -42,7 +42,7 @@
     <string name="time_with_2_args_text_view">"Application date: %1$s \nTime: %2$s"</string>
     <string name="time_with_1_arg_text_view">Application time: %1$s</string>
     <string name="loan_conditions_text_view">Loan conditions provided:</string>
-    <string name="loan_title_text_view">Loan application</string>
+    <string name="loan_application">Loan application</string>
     <string name="max_amount_create_text_view">Maximum amount: %1$s rub.</string>
     <string name="return_to_personal_area_button">Return to personal account</string>
     <string name="authorized_user_name_text_view">You are logged in as %1$s</string>

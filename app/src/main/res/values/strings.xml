@@ -43,7 +43,7 @@
     <string name="time_with_2_args_text_view">"Дата подачи заявки: %1$s \nВремя: %2$s"</string>
     <string name="time_with_1_arg_text_view">Время подачи заявки: %1$s</string>
     <string name="loan_conditions_text_view">Предоставляемые условия займа:</string>
-    <string name="loan_title_text_view">Заявка на займ</string>
+    <string name="loan_application">Заявка на займ</string>
     <string name="max_amount_create_text_view">Максимальная сумма: %1$s руб.</string>
     <string name="return_to_personal_area_button">Вернуться в личный кабинет</string>
     <string name="authorized_user_name_text_view">Вы авторизованы, как %1$s</string>
