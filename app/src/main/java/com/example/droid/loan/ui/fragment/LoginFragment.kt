@@ -53,21 +53,13 @@ class LoginFragment : Fragment(), LoginView {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        val nameLoginEditText = view?.findViewById<TextInputLayout>(R.id.nameLoginEditText)
-        if (nameLoginEditText != null) {
-            outState.putString("name", nameLoginEditText.editText?.text.toString())
-        }
-        val passwordLoginEditText = view?.findViewById<TextInputLayout>(R.id.passwordLoginEditText)
-        if (passwordLoginEditText != null) {
-            outState.putString("password", passwordLoginEditText.editText?.text.toString())
-        }
+        nameLoginEditText?.let { outState.putString("name", it.editText?.text.toString()) }
+        passwordLoginEditText?.let{ outState.putString("password", it.editText?.text.toString()) }
     }
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
         super.onViewStateRestored(savedInstanceState)
-        val nameLoginEditText = view?.findViewById<TextInputLayout>(R.id.nameLoginEditText)
         nameLoginEditText?.editText?.setText(savedInstanceState?.getString("name"))
-        val passwordLoginEditText = view?.findViewById<TextInputLayout>(R.id.passwordLoginEditText)
         passwordLoginEditText?.editText?.setText(savedInstanceState?.getString("password"))
     }
 
