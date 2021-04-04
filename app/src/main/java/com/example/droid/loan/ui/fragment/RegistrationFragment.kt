@@ -21,8 +21,8 @@ interface RegistrationView : BaseView {
     fun navigateTo(id: Int)
     fun showError(throwable: Throwable)
     fun showEmptyFieldsWarning()
-    fun startRegistrationLoading()
-    fun finishRegistrationLoading()
+    fun startLoading()
+    fun finishLoading()
     fun recreateRequireActivity()
 }
 
@@ -119,11 +119,11 @@ class RegistrationFragment : Fragment(), RegistrationView {
         showToast(getString(R.string.some_fields_are_empty))
     }
 
-    override fun startRegistrationLoading() {
+    override fun startLoading() {
         loadingRegistrationProgressBar.visibility = View.VISIBLE
     }
 
-    override fun finishRegistrationLoading() {
+    override fun finishLoading() {
         loadingRegistrationProgressBar.visibility = View.GONE
     }
 

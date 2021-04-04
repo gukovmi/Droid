@@ -81,8 +81,8 @@ class RegistrationPresenterTest {
 
         presenter.registration(name, password)
 
-        orderVerifier.verify(view).startRegistrationLoading()
-        orderVerifier.verify(view).finishRegistrationLoading()
+        orderVerifier.verify(view).startLoading()
+        orderVerifier.verify(view).finishLoading()
     }
 
     @Test
@@ -109,8 +109,8 @@ class RegistrationPresenterTest {
 
         presenter.registration(name, password)
 
-        orderVerifier.verify(view).startRegistrationLoading()
-        orderVerifier.verify(view).finishRegistrationLoading()
+        orderVerifier.verify(view).startLoading()
+        orderVerifier.verify(view).finishLoading()
     }
 
     @Test

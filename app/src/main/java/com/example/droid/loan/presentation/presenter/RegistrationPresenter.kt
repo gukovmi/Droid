@@ -27,7 +27,7 @@ class RegistrationPresenterImpl @Inject constructor(
 ) : RegistrationPresenter, BasePresenter<RegistrationView>() {
     override fun registration(name: String, password: String) {
         if (fieldsIsNotEmptyUseCase(listOf(name, password))) {
-            view?.startRegistrationLoading()
+            view?.startLoading()
             registrationUseCase(
                 Auth(
                     name,
@@ -37,10 +37,10 @@ class RegistrationPresenterImpl @Inject constructor(
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    view?.finishRegistrationLoading()
+                    view?.finishLoading()
                     view?.navigateTo(R.id.action_registrationFragment_to_loginFragment)
                 }, {
-                    view?.finishRegistrationLoading()
+                    view?.finishLoading()
                     view?.showError(it)
                 }).untilDestroy()
         } else view?.showEmptyFieldsWarning()
