@@ -52,25 +52,13 @@ class RegistrationFragment : Fragment(), RegistrationView {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        val nameRegistrationEditText =
-            view?.findViewById<TextInputLayout>(R.id.nameRegistrationEditText)
-        if (nameRegistrationEditText != null) {
-            outState.putString("name", nameRegistrationEditText.editText?.text.toString())
-        }
-        val passwordRegistrationEditText =
-            view?.findViewById<TextInputLayout>(R.id.passwordRegistrationEditText)
-        if (passwordRegistrationEditText != null) {
-            outState.putString("password", passwordRegistrationEditText.editText?.text.toString())
-        }
+        nameRegistrationEditText?.let { outState.putString("name", it.editText?.text.toString()) }
+        passwordRegistrationEditText?.let { outState.putString("password", it.editText?.text.toString()) }
     }
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
         super.onViewStateRestored(savedInstanceState)
-        val nameRegistrationEditText =
-            view?.findViewById<TextInputLayout>(R.id.nameRegistrationEditText)
         nameRegistrationEditText?.editText?.setText(savedInstanceState?.getString("name"))
-        val passwordRegistrationEditText =
-            view?.findViewById<TextInputLayout>(R.id.passwordRegistrationEditText)
         passwordRegistrationEditText?.editText?.setText(savedInstanceState?.getString("password"))
     }
 
