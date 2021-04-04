@@ -1,74 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:paddingTop="8dp"
-    android:paddingBottom="8dp">
+    android:layout_margin="8dp"
+    android:elevation="8dp">
 
-    <com.google.android.material.card.MaterialCardView
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/stateImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_margin="8dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_twotone_check_circle_24" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="5dp">
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="8dp">
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/stateImageView"
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/idTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_margin="8dp"
-            android:scaleType="centerCrop" />
+            android:gravity="center"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            tools:text="Заявка № 38" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/stateTextView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="8dp">
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:textAppearance="?attr/textAppearanceBody1"
+            tools:text="Статус заявки: Одобрено" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/idTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:paddingTop="5dp"
-                android:textAppearance="?attr/textAppearanceHeadline6"
-                tools:text="Заявка № 38" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/amountTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textAppearance="?attr/textAppearanceBody1"
+            tools:text="Сумма: 10000 руб." />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/stateTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:paddingTop="5dp"
-                android:textAppearance="?attr/textAppearanceBody1"
-                tools:text="Статус заявки: Одобрено" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/dateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textAppearance="?attr/textAppearanceBody1"
+            tools:text="Дата: 2020-11-30, время 18:37:15.922" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/amountTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:paddingTop="5dp"
-                android:textAppearance="?attr/textAppearanceBody1"
-                tools:text="Сумма: 10000 руб." />
+    </LinearLayout>
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/dateTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:paddingTop="5dp"
-                android:textAppearance="?attr/textAppearanceBody1"
-                tools:text="Дата: 2020-11-30, время 18:37:15.922" />
-
-        </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
-</LinearLayout>
+</com.google.android.material.card.MaterialCardView>
