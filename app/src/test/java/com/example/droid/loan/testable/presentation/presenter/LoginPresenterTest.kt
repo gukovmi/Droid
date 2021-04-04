@@ -87,8 +87,8 @@ class LoginPresenterTest {
 
         presenter.login(name, password)
 
-        orderVerifier.verify(view).startLoginLoading()
-        orderVerifier.verify(view).finishLoginLoading()
+        orderVerifier.verify(view).startLoading()
+        orderVerifier.verify(view).finishLoading()
     }
 
     @Test
@@ -115,8 +115,8 @@ class LoginPresenterTest {
 
         presenter.login(name, password)
 
-        orderVerifier.verify(view).startLoginLoading()
-        orderVerifier.verify(view).finishLoginLoading()
+        orderVerifier.verify(view).startLoading()
+        orderVerifier.verify(view).finishLoading()
     }
 
     @Test

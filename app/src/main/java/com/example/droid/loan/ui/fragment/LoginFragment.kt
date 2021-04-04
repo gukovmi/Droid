@@ -22,8 +22,8 @@ interface LoginView : BaseView {
     fun navigateToWithBundle(id: Int, bundle: Bundle)
     fun showError(throwable: Throwable)
     fun showEmptyFieldsWarning()
-    fun startLoginLoading()
-    fun finishLoginLoading()
+    fun startLoading()
+    fun finishLoading()
     fun recreateRequireActivity()
 }
 
@@ -120,11 +120,11 @@ class LoginFragment : Fragment(), LoginView {
         showToast(getString(R.string.some_fields_are_empty))
     }
 
-    override fun startLoginLoading() {
+    override fun startLoading() {
         loadingLoginProgressBar.visibility = View.VISIBLE
     }
 
-    override fun finishLoginLoading() {
+    override fun finishLoading() {
         loadingLoginProgressBar.visibility = View.GONE
     }
 

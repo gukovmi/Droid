@@ -34,7 +34,7 @@ class LoginPresenterImpl @Inject constructor(
         if (fieldsIsNotEmptyUseCase(listOf(name, password))) {
             val auth =
                 Auth(name, password)
-            view?.startLoginLoading()
+            view?.startLoading()
             loginUseCase(auth).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
@@ -43,13 +43,13 @@ class LoginPresenterImpl @Inject constructor(
                     val bundle = Bundle().apply {
                         putBoolean("fromLogin", true)
                     }
-                    view?.finishLoginLoading()
+                    view?.finishLoading()
                     view?.navigateToWithBundle(
                         R.id.action_loginFragment_to_personalAreaFragment,
                         bundle
                     )
                 }, {
-                    view?.finishLoginLoading()
+                    view?.finishLoading()
                     view?.showError(it)
                 }).untilDestroy()
         } else view?.showEmptyFieldsWarning()
