@@ -63,39 +63,17 @@ class CreateLoanFragment : Fragment(), CreateLoanView {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        val firstNameCreateEditText =
-            view?.findViewById<TextInputLayout>(R.id.firstNameCreateEditText)
-        if (firstNameCreateEditText != null) {
-            outState.putString("firstName", firstNameCreateEditText.editText?.text.toString())
-        }
-        val lastNameCreateEditText =
-            view?.findViewById<TextInputLayout>(R.id.lastNameCreateEditText)
-        if (lastNameCreateEditText != null) {
-            outState.putString("lastName", lastNameCreateEditText.editText?.text.toString())
-        }
-        val amountCreateEditText = view?.findViewById<TextInputLayout>(R.id.amountCreateEditText)
-        if (amountCreateEditText != null) {
-            outState.putString("amount", amountCreateEditText.editText?.text.toString())
-        }
-        val phoneNumberCreateEditText =
-            view?.findViewById<TextInputLayout>(R.id.phoneNumberCreateEditText)
-        if (phoneNumberCreateEditText != null) {
-            outState.putString("phoneNumber", phoneNumberCreateEditText.editText?.text.toString())
-        }
+        firstNameCreateEditText?.let { outState.putString("firstName", it.editText?.text.toString()) }
+        lastNameCreateEditText?.let { outState.putString("lastName", it.editText?.text.toString()) }
+        amountCreateEditText?.let { outState.putString("amount", it.editText?.text.toString()) }
+        phoneNumberCreateEditText?.let { outState.putString("phoneNumber", it.editText?.text.toString()) }
     }
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
         super.onViewStateRestored(savedInstanceState)
-        val firstNameCreateEditText =
-            view?.findViewById<TextInputLayout>(R.id.firstNameCreateEditText)
         firstNameCreateEditText?.editText?.setText(savedInstanceState?.getString("firstName"))
-        val lastNameCreateEditText =
-            view?.findViewById<TextInputLayout>(R.id.lastNameCreateEditText)
         lastNameCreateEditText?.editText?.setText(savedInstanceState?.getString("lastName"))
-        val amountCreateEditText = view?.findViewById<TextInputLayout>(R.id.amountCreateEditText)
         amountCreateEditText?.editText?.setText(savedInstanceState?.getString("amount"))
-        val phoneNumberCreateEditText =
-            view?.findViewById<TextInputLayout>(R.id.phoneNumberCreateEditText)
         phoneNumberCreateEditText?.editText?.setText(savedInstanceState?.getString("phoneNumber"))
     }
 
