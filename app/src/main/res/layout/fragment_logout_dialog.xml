@@ -2,11 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".loan.ui.fragment.HelpDialogFragment">
+    tools:context=".loan.ui.fragment.LogoutDialogFragment">
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/logoutDialogTextView"
@@ -40,4 +40,5 @@
             android:text="@string/no_logout_dialog_button" />
 
     </LinearLayout>
+
 </LinearLayout>
