@@ -27,6 +27,7 @@
     <string name="exception_other">Sorry, an error occurred :(</string>
     <string name="amount_is_not_valid">The amount entered is higher than the maximum allowable</string>
     <string name="some_fields_are_empty">Fill in all the fields!</string>
+    <string name="loan_details">Loan details</string>
     <string name="information_details_approved_text_view">Congratulations! Your loan application has been approved, you can receive a payment at any branch of the organization convenient for you, or by non-cash method by filling out a special form in our application.</string>
     <string name="information_details_rejected_text_view">Sorry, your loan application has been rejected.</string>
     <string name="information_details_registered_text_view">Your application is still pending, you can track its status in your personal account.</string>

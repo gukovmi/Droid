@@ -20,6 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:menu="@menu/top_app_bar"
+            app:title="@string/loan_details"
             app:navigationIcon="@drawable/ic_baseline_arrow_back_24" />
 
     </com.google.android.material.appbar.AppBarLayout>

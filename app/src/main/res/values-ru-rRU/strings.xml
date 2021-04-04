@@ -27,6 +27,7 @@
     <string name="exception_other">К сожалению, произошла ошибка:(</string>
     <string name="amount_is_not_valid">Введенная сумма выше максимально допустимой</string>
     <string name="some_fields_are_empty">Заполните все поля!</string>
+    <string name="loan_details">Детали заявки</string>
     <string name="information_details_approved_text_view">"Поздравляем! Ваша заявка на займ одобрена, вы можете получить выплату в любом удобном для Вас филиале организации, либо безналичным способом заполнив специальную форму в нашем приложений. "</string>
     <string name="information_details_rejected_text_view">К сожалению, Ваша заявка на займ отклонена.</string>
     <string name="information_details_registered_text_view">Ваша заявка пока находится на рассмотрении, вы можете отслеживать ее статус в личном кабинете.</string>
