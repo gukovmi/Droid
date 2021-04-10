@@ -16,9 +16,11 @@
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/topAppBarRegistration"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:menu="@menu/top_app_bar" />
+            app:menu="@menu/top_app_bar"
+            app:title="@string/registration" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -26,6 +28,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:elevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,18 +41,10 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/registration"
-                android:textAppearance="?attr/textAppearanceHeadline6" />
-
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/nameRegistrationEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 android:hint="@string/name_field_edit_text">
 
                 <com.google.android.material.textfield.TextInputEditText

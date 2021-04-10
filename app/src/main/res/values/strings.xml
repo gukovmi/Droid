@@ -49,7 +49,7 @@
     <string name="return_to_personal_area_button">Вернуться в личный кабинет</string>
     <string name="authorized_user_name_text_view">Вы авторизованы, как %1$s</string>
     <string name="personal_area">Личный кабинет</string>
-    <string name="registration">Регистрация нового аккаунта</string>
+    <string name="registration">Регистрация</string>
     <string name="authorization">Авторизация</string>
     <string name="create_loan_button">Оформить заявку на займ</string>
     <string name="update_loans_button">Обновить информацию</string>

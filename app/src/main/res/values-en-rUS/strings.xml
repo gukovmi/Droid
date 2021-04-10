@@ -47,7 +47,7 @@
     <string name="max_amount_create_text_view">Maximum amount: %1$s rub.</string>
     <string name="return_to_personal_area_button">Return to personal account</string>
     <string name="authorized_user_name_text_view">You are logged in as %1$s</string>
-    <string name="registration">Registering a new account</string>
+    <string name="registration">Registration</string>
     <string name="authorization">Authorization</string>
     <string name="app_name">Droid</string>
     <string name="create_loan_button">Сreate a loan application</string>
