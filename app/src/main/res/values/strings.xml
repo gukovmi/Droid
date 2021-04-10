@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Droid</string>
+    <string name="app_name">Займы</string>
     <string name="name_field_edit_text">Введите ваш логин</string>
     <string name="password_field_edit_text">Введите ваш пароль</string>
     <string name="first_name_field_edit_text">Введите ваше имя</string>
