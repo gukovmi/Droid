@@ -25,162 +25,155 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <com.google.android.material.card.MaterialCardView
+    <ScrollView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:elevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/topAppBarLayoutCreateLoan">
 
-        <ScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:layout_margin="16dp"
+                android:elevation="8dp">
 
-                <com.google.android.material.card.MaterialCardView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:elevation="8dp">
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="16dp">
+                        android:text="@string/loan_conditions_text_view"
+                        android:textAppearance="?attr/textAppearanceSubtitle1"
+                        android:textStyle="bold" />
 
-                        <com.google.android.material.textview.MaterialTextView
-                            android:layout_width="wrap_content"
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/maxAmountCreateTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:textAppearance="?attr/textAppearanceSubtitle1"
+                        tools:text="Максимальная сумма: 10000 рублей" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/percentCreateTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:textAppearance="?attr/textAppearanceSubtitle1"
+                        tools:text="Процентная ставка: 5%" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/periodCreateTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:textAppearance="?attr/textAppearanceSubtitle1"
+                        tools:text="Срок займа: 10 дней" />
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:elevation="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/firstNameCreateEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/first_name_field_edit_text">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:text="@string/loan_conditions_text_view"
-                            android:textAppearance="?attr/textAppearanceSubtitle1"
-                            android:textStyle="bold" />
+                            android:inputType="textPersonName" />
 
-                        <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/maxAmountCreateTextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:textAppearance="?attr/textAppearanceSubtitle1"
-                            tools:text="Максимальная сумма: 10000 рублей" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                        <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/percentCreateTextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:textAppearance="?attr/textAppearanceSubtitle1"
-                            tools:text="Процентная ставка: 5%" />
 
-                        <com.google.android.material.textview.MaterialTextView
-                            android:id="@+id/periodCreateTextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:textAppearance="?attr/textAppearanceSubtitle1"
-                            tools:text="Срок займа: 10 дней" />
-                    </LinearLayout>
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:elevation="8dp">
-
-                    <LinearLayout
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/lastNameCreateEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="16dp">
+                        android:layout_marginTop="5dp"
+                        android:hint="@string/last_name_field_edit_text">
 
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/firstNameCreateEditText"
+                        <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/first_name_field_edit_text">
+                            android:gravity="center"
+                            android:inputType="textPersonName" />
 
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:inputType="textPersonName" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                        </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/amountCreateEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:hint="@string/amount_field_edit_text">
 
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/lastNameCreateEditText"
+                        <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:hint="@string/last_name_field_edit_text">
+                            android:gravity="center"
+                            android:inputType="number" />
 
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:inputType="textPersonName" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                        </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/phoneNumberCreateEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:hint="@string/phone_number_field_edit_text">
 
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/amountCreateEditText"
+                        <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:hint="@string/amount_field_edit_text">
+                            android:gravity="center"
+                            android:inputType="phone" />
 
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:inputType="number" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                        </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/sendRequestButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/send_request_button" />
 
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/phoneNumberCreateEditText"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:hint="@string/phone_number_field_edit_text">
+                </LinearLayout>
 
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:inputType="phone" />
+            </com.google.android.material.card.MaterialCardView>
 
-                        </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
 
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/sendRequestButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="@string/send_request_button" />
-
-                    </LinearLayout>
-
-                </com.google.android.material.card.MaterialCardView>
-
-            </LinearLayout>
-
-        </ScrollView>
-
-    </com.google.android.material.card.MaterialCardView>
+    </ScrollView>
 
     <ProgressBar
         android:id="@+id/loadingCreateLoanProgressBar"
