@@ -10,6 +10,7 @@
     <string name="phone_number_field_edit_text">Enter your phone number</string>
     <string name="amount_field_edit_text">Enter the desired loan amount</string>
     <string name="skip_registration_button">I already have an account!</string>
+    <string name="registration_success">Account %1$s has been successfully registered!</string>
     <string name="send_request_button">Send request</string>
     <string name="user">user</string>
     <string name="admin">administrator</string>

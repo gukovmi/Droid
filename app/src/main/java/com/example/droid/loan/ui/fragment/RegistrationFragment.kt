@@ -13,7 +13,6 @@ import com.example.droid.loan.App
 import com.example.droid.loan.presentation.presenter.RegistrationPresenterImpl
 import com.example.droid.loan.ui.base.BaseView
 import com.example.droid.loan.ui.converter.ThrowableConverter
-import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.fragment_registration.*
 import javax.inject.Inject
 
@@ -21,6 +20,7 @@ interface RegistrationView : BaseView {
     fun navigateTo(id: Int)
     fun showError(throwable: Throwable)
     fun showEmptyFieldsWarning()
+    fun showRegistrationSuccessMessage(name: String)
     fun startLoading()
     fun finishLoading()
     fun recreateRequireActivity()
@@ -96,7 +96,7 @@ class RegistrationFragment : Fragment(), RegistrationView {
     }
 
     private fun showToast(message: String) {
-        Toast.makeText(this.context, message, Toast.LENGTH_LONG).show()
+        Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
     }
 
     override fun showError(throwable: Throwable) {
@@ -105,6 +105,10 @@ class RegistrationFragment : Fragment(), RegistrationView {
 
     override fun showEmptyFieldsWarning() {
         showToast(getString(R.string.some_fields_are_empty))
+    }
+
+    override fun showRegistrationSuccessMessage(name: String) {
+        showToast(getString(R.string.registration_success, name))
     }
 
     override fun startLoading() {

@@ -8,6 +8,7 @@
     <string name="amount_field_edit_text">Введите желаемую сумму займа</string>
     <string name="registration_button">Зарегистрироваться</string>
     <string name="skip_registration_button">У меня уже есть аккаунт!</string>
+    <string name="registration_success">Аккаунт %1$s успешно зарегистрирован!</string>
     <string name="login_button">Войти</string>
     <string name="send_request_button">Отправить заявку</string>
     <string name="user">пользователь</string>

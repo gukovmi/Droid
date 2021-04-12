@@ -38,6 +38,7 @@ class RegistrationPresenterImpl @Inject constructor(
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     view?.finishLoading()
+                    view?.showRegistrationSuccessMessage(it.name)
                     view?.navigateTo(R.id.action_registrationFragment_to_loginFragment)
                 }, {
                     view?.finishLoading()
