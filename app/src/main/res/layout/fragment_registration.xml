@@ -73,14 +73,14 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/registrationButton"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="@string/registration_button" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/skipRegistrationButton"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="@string/skip_registration_button" />
