@@ -10,7 +10,7 @@ import com.example.droid.loan.domain.entity.Loan
 import com.example.droid.loan.domain.entity.State
 import com.example.droid.loan.ui.converter.OffsetDateTimeConverter
 import kotlinx.android.synthetic.main.item_loan.view.*
-import kotlinx.android.synthetic.main.item_personal_area.view.*
+import kotlinx.android.synthetic.main.item_header_personal_area.view.*
 
 typealias OnLoanItemClick = (Loan) -> Unit
 typealias OnButtonClick = () -> Unit
@@ -30,7 +30,7 @@ class PersonalAreaAdapter(
     }
 
     inner class HeaderViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        fun bindPersonalArea() {
+        fun bindHeader() {
             itemView.apply {
                 authorizedUserNameTextView.text = authorizedUserNameText
                 if (loansArrayList.isEmpty()) loansHistoryTextView.visibility = View.GONE
@@ -82,12 +82,12 @@ class PersonalAreaAdapter(
         viewType: Int
     ): RecyclerView.ViewHolder =
         when (viewType) {
-            0 -> {
+            HEADER_VIEW_TYPE_CODE -> {
                 val view =
-                    LayoutInflater.from(context).inflate(R.layout.item_personal_area, parent, false)
+                    LayoutInflater.from(context).inflate(R.layout.item_header_personal_area, parent, false)
                 HeaderViewHolder(view)
             }
-            1 -> {
+            LOAN_VIEW_TYPE_CODE -> {
                 val view = LayoutInflater.from(context).inflate(R.layout.item_loan, parent, false)
                 LoansListViewHolder(view)
             }
@@ -108,7 +108,7 @@ class PersonalAreaAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder.itemViewType) {
-            HEADER_VIEW_TYPE_CODE -> (holder as HeaderViewHolder).bindPersonalArea()
+            HEADER_VIEW_TYPE_CODE -> (holder as HeaderViewHolder).bindHeader()
             LOAN_VIEW_TYPE_CODE -> (holder as LoansListViewHolder).bindLoan(loansArrayList[position - 1])
         }
     }
