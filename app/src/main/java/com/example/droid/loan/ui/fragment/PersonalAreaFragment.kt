@@ -14,7 +14,7 @@ import com.example.droid.R
 import com.example.droid.loan.App
 import com.example.droid.loan.domain.entity.Loan
 import com.example.droid.loan.presentation.presenter.PersonalAreaPresenterImpl
-import com.example.droid.loan.ui.adapter.LoansListAdapter
+import com.example.droid.loan.ui.adapter.PersonalAreaAdapter
 import com.example.droid.loan.ui.base.BaseView
 import com.example.droid.loan.ui.converter.OffsetDateTimeConverter
 import com.example.droid.loan.ui.converter.ThrowableConverter
@@ -37,7 +37,7 @@ class PersonalAreaFragment : Fragment(), PersonalAreaView {
     lateinit var presenter: PersonalAreaPresenterImpl
     private lateinit var throwableConverter: ThrowableConverter
     private lateinit var offsetDateTimeConverter: OffsetDateTimeConverter
-    private lateinit var loansListAdapter: LoansListAdapter
+    private lateinit var personalAreaAdapter: PersonalAreaAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,8 +56,8 @@ class PersonalAreaFragment : Fragment(), PersonalAreaView {
 
         val loansListRecyclerView = view?.findViewById<RecyclerView>(R.id.loansListRecyclerView)
         if (loansListRecyclerView != null) {
-            val loansListAdapter = loansListRecyclerView.adapter as LoansListAdapter
-            outState.putParcelableArrayList("loans", loansListAdapter.getLoansArrayList())
+            val loansListAdapter = loansListRecyclerView.adapter as PersonalAreaAdapter
+            outState.putParcelableArrayList("loans", loansListAdapter.getLoans())
         }
     }
 
@@ -80,15 +80,7 @@ class PersonalAreaFragment : Fragment(), PersonalAreaView {
     }
 
     private fun initViews(view: View) {
-        authorizedUserNameTextView.text =
-            String.format(getString(R.string.authorized_user_name_text_view), presenter.getName())
         loansListRecyclerView.layoutManager = LinearLayoutManager(view.context)
-        createLoanButton.setOnClickListener {
-            presenter.getLoanConditions()
-        }
-        updateLoansButton.setOnClickListener {
-            presenter.updateLoans()
-        }
         topAppBarPersonalArea.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.helpMenuItem -> {
@@ -113,14 +105,20 @@ class PersonalAreaFragment : Fragment(), PersonalAreaView {
     }
 
     private fun initAdapter(view: View) {
-        loansListAdapter = LoansListAdapter(
+        personalAreaAdapter = PersonalAreaAdapter(
             context = view.context,
             loansArrayList = arrayListOf(),
-            offsetDateTimeConverter = offsetDateTimeConverter
-        ) { loan: Loan ->
-            presenter.getLoanDetails(loan.id)
-        }
-        loansListRecyclerView.adapter = loansListAdapter
+            offsetDateTimeConverter = offsetDateTimeConverter,
+            authorizedUserNameText = String.format(
+                getString(R.string.authorized_user_name_text_view),
+                presenter.getName()
+            ),
+            onCreateLoanButtonClick = { presenter.getLoanConditions() },
+            onUpdateButtonClick = { presenter.updateLoans() },
+            onLoanItemClick = { loan: Loan ->
+                presenter.getLoanDetails(loan.id)
+            })
+        loansListRecyclerView.adapter = personalAreaAdapter
     }
 
     override fun navigateTo(id: Int) {
@@ -132,7 +130,7 @@ class PersonalAreaFragment : Fragment(), PersonalAreaView {
     }
 
     override fun showLoans(loansList: List<Loan>) {
-        loansListAdapter.showLoans(loansList)
+        personalAreaAdapter.showLoans(loansList)
     }
 
     private fun showToast(message: String) {

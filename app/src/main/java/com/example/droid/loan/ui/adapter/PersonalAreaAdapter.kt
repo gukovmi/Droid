@@ -10,21 +10,39 @@ import com.example.droid.loan.domain.entity.Loan
 import com.example.droid.loan.domain.entity.State
 import com.example.droid.loan.ui.converter.OffsetDateTimeConverter
 import kotlinx.android.synthetic.main.item_loan.view.*
+import kotlinx.android.synthetic.main.item_personal_area.view.*
 
 typealias OnLoanItemClick = (Loan) -> Unit
+typealias OnButtonClick = () -> Unit
 
-class LoansListAdapter(
+class PersonalAreaAdapter(
     private val context: Context,
     private var loansArrayList: ArrayList<Loan>,
     private val offsetDateTimeConverter: OffsetDateTimeConverter,
+    private val authorizedUserNameText: String,
+    private val onCreateLoanButtonClick: OnButtonClick,
+    private val onUpdateButtonClick: OnButtonClick,
     private val onLoanItemClick: OnLoanItemClick
-) : RecyclerView.Adapter<LoansListAdapter.ViewHolder>() {
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        fun bindLoan(
-            loan: Loan,
-            offsetDateTimeConverter: OffsetDateTimeConverter,
-            onLoanItemClick: OnLoanItemClick
-        ) {
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    private companion object {
+        const val HEADER_VIEW_TYPE_CODE = 0
+        const val LOAN_VIEW_TYPE_CODE = 1
+    }
+
+    inner class HeaderViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        fun bindPersonalArea() {
+            itemView.apply {
+                authorizedUserNameTextView.text = authorizedUserNameText
+                if (loansArrayList.isEmpty()) loansHistoryTextView.visibility = View.GONE
+                else loansHistoryTextView.visibility = View.VISIBLE
+                createLoanButton.setOnClickListener { onCreateLoanButtonClick() }
+                updateLoansButton.setOnClickListener { onUpdateButtonClick() }
+            }
+        }
+    }
+
+    inner class LoansListViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        fun bindLoan(loan: Loan) {
             itemView.apply {
                 amountTextView.text =
                     String.format(context.getString(R.string.amount_loan_text_view), loan.amount)
@@ -55,31 +73,43 @@ class LoansListAdapter(
         }
     }
 
+    override fun getItemViewType(position: Int): Int =
+        if (position == 0) HEADER_VIEW_TYPE_CODE
+        else LOAN_VIEW_TYPE_CODE
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): ViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.item_loan, parent, false)
-        return ViewHolder(view)
-    }
+    ): RecyclerView.ViewHolder =
+        when (viewType) {
+            0 -> {
+                val view =
+                    LayoutInflater.from(context).inflate(R.layout.item_personal_area, parent, false)
+                HeaderViewHolder(view)
+            }
+            1 -> {
+                val view = LayoutInflater.from(context).inflate(R.layout.item_loan, parent, false)
+                LoansListViewHolder(view)
+            }
+            else -> throw IllegalArgumentException()
+        }
 
     override fun getItemCount(): Int {
-        return loansArrayList.size
+        return loansArrayList.size + 1
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bindLoan(loansArrayList[position], offsetDateTimeConverter, onLoanItemClick)
-    }
-
-    fun getLoansArrayList(): ArrayList<Loan> {
-        val loansArrayList = arrayListOf<Loan>()
-        this.loansArrayList.forEach { loansArrayList.add(it) }
-        return loansArrayList
-    }
+    fun getLoans(): ArrayList<Loan> = loansArrayList
 
     fun showLoans(loansList: List<Loan>) {
-        this.loansArrayList = arrayListOf()
-        loansList.forEach { this.loansArrayList.add(it) }
+        this.loansArrayList.clear()
+        loansArrayList.addAll(loansList)
         notifyDataSetChanged()
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (holder.itemViewType) {
+            HEADER_VIEW_TYPE_CODE -> (holder as HeaderViewHolder).bindPersonalArea()
+            LOAN_VIEW_TYPE_CODE -> (holder as LoansListViewHolder).bindLoan(loansArrayList[position - 1])
+        }
     }
 }
