@@ -2,8 +2,9 @@ package com.example.droid.loan.data.converter
 
 import com.example.droid.loan.data.model.*
 import com.example.droid.loan.domain.entity.*
+import javax.inject.Inject
 
-class DataConverter {
+class DataConverter @Inject constructor() {
     fun fromDataUserEntity(userModel: UserModel): User =
         User(
             name = userModel.name,
