@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.content.res.Resources
 import androidx.room.Room
-import com.example.droid.loan.data.converter.DataConverter
 import com.example.droid.loan.data.datasource.auth.NetworkAuthDataSource
 import com.example.droid.loan.data.datasource.auth.NetworkAuthDataSourceImpl
 import com.example.droid.loan.data.datasource.info.SharedPreferencesDataSource
@@ -25,6 +24,7 @@ import com.example.droid.loan.domain.repository.AuthRepository
 import com.example.droid.loan.domain.repository.InfoRepository
 import com.example.droid.loan.domain.repository.LoanRepository
 import com.google.gson.GsonBuilder
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -36,115 +36,87 @@ import retrofit2.converter.scalars.ScalarsConverterFactory
 import javax.inject.Singleton
 
 @Module
-class DataModule {
-    @Singleton
-    @Provides
-    fun provideAuthRepository(
-        networkAuthDataSource: NetworkAuthDataSource,
-        dataConverter: DataConverter
-    ): AuthRepository =
-        AuthRepositoryImpl(
-            networkAuthDataSource,
-            dataConverter
-        )
+interface DataModule {
+    companion object {
+        @Singleton
+        @Provides
+        fun provideLoansDao(context: Context): LoansDao =
+            Room.databaseBuilder(
+                context,
+                AppDatabase::class.java, "loans"
+            ).build().loansDao()
 
-    @Singleton
-    @Provides
-    fun provideLoanRepository(
-        networkLoanDataSource: NetworkLoanDataSource,
-        localLoanDataSource: LocalLoanDataSource,
-        dataConverter: DataConverter
-    ): LoanRepository =
-        LoanRepositoryImpl(
-            networkLoanDataSource,
-            localLoanDataSource,
-            dataConverter
-        )
+        @Singleton
+        @Provides
+        fun provideAuthApiClient(): AuthApi {
+            val interceptor = HttpLoggingInterceptor()
+            interceptor.level = HttpLoggingInterceptor.Level.BODY
+            val client = OkHttpClient.Builder()
+                .addInterceptor(interceptor)
+                .build()
+            val gson = GsonBuilder().setLenient().create()
+            val retrofit = Retrofit.Builder()
+                .baseUrl(ValueStore.BASE_URL)
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .client(client)
+                .build()
 
-    @Singleton
-    @Provides
-    fun provideInfoRepository(sharedPreferencesDataSource: SharedPreferencesDataSource): InfoRepository =
-        InfoRepositoryImpl(sharedPreferencesDataSource)
+            return retrofit.create(AuthApi::class.java)
+        }
 
-    @Singleton
-    @Provides
-    fun provideSharedPreferencesDataSource(sharedPreferences: SharedPreferences): SharedPreferencesDataSource =
-        SharedPreferencesDataSourceImpl(sharedPreferences)
+        @Singleton
+        @Provides
+        fun provideLoanApiClient(): LoanApi {
+            val interceptor = HttpLoggingInterceptor()
+            interceptor.level = HttpLoggingInterceptor.Level.BODY
+            val client = OkHttpClient.Builder()
+                .addInterceptor(interceptor)
+                .build()
+            val gson = GsonBuilder().setLenient().create()
+            val retrofit = Retrofit.Builder()
+                .baseUrl(ValueStore.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .client(client)
+                .build()
 
+            return retrofit.create(LoanApi::class.java)
+        }
 
-    @Singleton
-    @Provides
-    fun provideNetworkAuthDataSource(authApiClient: AuthApi): NetworkAuthDataSource =
-        NetworkAuthDataSourceImpl(authApiClient)
+        @Singleton
+        @Provides
+        fun provideSharedPreferences(context: Context): SharedPreferences =
+            context.getSharedPreferences(
+                "com.example.droid.prefs",
+                Context.MODE_PRIVATE
+            )
 
-    @Singleton
-    @Provides
-    fun provideNetworkLoanDataSource(loanApiClient: LoanApi): NetworkLoanDataSource =
-        NetworkLoanDataSourceImpl(loanApiClient)
-
-    @Singleton
-    @Provides
-    fun provideLocalLoanDataSource(loansDao: LoansDao): LocalLoanDataSource =
-        LocalLoanDataSourceImpl(loansDao)
-
-    @Singleton
-    @Provides
-    fun provideLoansDao(context: Context): LoansDao =
-        Room.databaseBuilder(
-            context,
-            AppDatabase::class.java, "loans"
-        ).build().loansDao()
-
-    @Singleton
-    @Provides
-    fun provideAuthApiClient(): AuthApi {
-        val interceptor = HttpLoggingInterceptor()
-        interceptor.level = HttpLoggingInterceptor.Level.BODY
-        val client = OkHttpClient.Builder()
-            .addInterceptor(interceptor)
-            .build()
-        val gson = GsonBuilder().setLenient().create()
-        val retrofit = Retrofit.Builder()
-            .baseUrl(ValueStore.BASE_URL)
-            .addConverterFactory(ScalarsConverterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .client(client)
-            .build()
-
-        return retrofit.create(AuthApi::class.java)
+        @Singleton
+        @Provides
+        fun provideResources(context: Context): Resources =
+            context.resources
     }
 
-    @Singleton
-    @Provides
-    fun provideLoanApiClient(): LoanApi {
-        val interceptor = HttpLoggingInterceptor()
-        interceptor.level = HttpLoggingInterceptor.Level.BODY
-        val client = OkHttpClient.Builder()
-            .addInterceptor(interceptor)
-            .build()
-        val gson = GsonBuilder().setLenient().create()
-        val retrofit = Retrofit.Builder()
-            .baseUrl(ValueStore.BASE_URL)
-            .addConverterFactory(ScalarsConverterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .client(client)
-            .build()
+    @Binds
+    fun bindAuthRepository(authRepositoryImpl: AuthRepositoryImpl): AuthRepository
 
-        return retrofit.create(LoanApi::class.java)
-    }
+    @Binds
+    fun bindLoanRepository(loanRepositoryImpl: LoanRepositoryImpl): LoanRepository
 
-    @Singleton
-    @Provides
-    fun provideSharedPreferences(context: Context): SharedPreferences =
-        context.getSharedPreferences(
-            "com.example.droid.prefs",
-            Context.MODE_PRIVATE
-        )
+    @Binds
+    fun bindInfoRepository(infoRepositoryImpl: InfoRepositoryImpl): InfoRepository
 
-    @Singleton
-    @Provides
-    fun provideResources(context: Context): Resources =
-        context.resources
+    @Binds
+    fun bindSharedPreferencesDataSource(SharedPreferencesDataSourceImpl: SharedPreferencesDataSourceImpl): SharedPreferencesDataSource
+
+    @Binds
+    fun bindNetworkLoanDataSource(networkLoanDataSourceImpl: NetworkLoanDataSourceImpl): NetworkLoanDataSource
+
+    @Binds
+    fun bindLocalLoanDataSource(localLoanDataSourceImpl: LocalLoanDataSourceImpl): LocalLoanDataSource
+
+    @Binds
+    fun bindNetworkAuthDataSource(networkAuthDataSourceImpl: NetworkAuthDataSourceImpl): NetworkAuthDataSource
 }
