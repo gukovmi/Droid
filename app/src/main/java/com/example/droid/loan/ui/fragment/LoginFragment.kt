@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.fragment_login.*
 import javax.inject.Inject
 
 interface LoginView : BaseView {
+    fun navigateBack()
     fun navigateTo(id: Int)
     fun navigateToWithBundle(id: Int, bundle: Bundle)
     fun showError(throwable: Throwable)
@@ -94,6 +95,10 @@ class LoginFragment : Fragment(), LoginView {
 
     private fun showToast(message: String) {
         Toast.makeText(this.context, message, Toast.LENGTH_LONG).show()
+    }
+
+    override fun navigateBack() {
+        findNavController().popBackStack()
     }
 
     override fun navigateTo(id: Int) {

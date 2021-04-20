@@ -20,6 +20,7 @@ import javax.inject.Inject
 
 interface CreateLoanView : BaseView {
     fun showLoanConditions(loanConditions: LoanConditions)
+    fun navigateBack()
     fun navigateTo(id: Int)
     fun navigateToWithBundle(id: Int, bundle: Bundle)
     fun showError(throwable: Throwable)
@@ -126,6 +127,10 @@ class CreateLoanFragment : Fragment(), CreateLoanView {
             getString(R.string.period_loan_text_view),
             loanConditions.period.toString()
         )
+    }
+
+    override fun navigateBack() {
+        findNavController().popBackStack()
     }
 
     override fun navigateTo(id: Int) {

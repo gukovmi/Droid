@@ -47,7 +47,7 @@ class LoanDetailsPresenterImpl @Inject constructor(
     }
 
     override fun returnToPreviousScreen() {
-        view?.navigateTo(R.id.action_loanDetailsFragment_to_personalAreaFragment)
+        view?.navigateBack()
     }
 
     override fun showHelpDialog() {

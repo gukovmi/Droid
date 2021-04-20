@@ -20,7 +20,7 @@
             app:destination="@id/personalAreaFragment"
             app:popUpTo="@id/main_graph"
             app:popUpToInclusive="true" />
-        <deepLink app:uri="focusapp-env.eba-xm2atk2z.eu-central-1.elasticbeanstalk.com/" />
+        <deepLink app:uri="droid-project.herokuapp.com/" />
     </fragment>
 
     <fragment
@@ -43,11 +43,6 @@
             android:id="@+id/action_loginFragment_to_personalAreaFragment"
             app:destination="@id/personalAreaFragment" />
         <deepLink app:uri="focusapp-env.eba-xm2atk2z.eu-central-1.elasticbeanstalk.com/login" />
-        <action
-            android:id="@+id/action_loginFragment_to_registrationFragment"
-            app:destination="@id/registrationFragment"
-            app:popUpTo="@id/main_graph"
-            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
@@ -77,13 +72,7 @@
         android:id="@+id/loanDetailsFragment"
         android:name="com.example.droid.loan.ui.fragment.LoanDetailsFragment"
         android:label="fragment_loan_details"
-        tools:layout="@layout/fragment_loan_details">
-        <action
-            android:id="@+id/action_loanDetailsFragment_to_personalAreaFragment"
-            app:destination="@id/personalAreaFragment"
-            app:popUpTo="@id/main_graph"
-            app:popUpToInclusive="true" />
-    </fragment>
+        tools:layout="@layout/fragment_loan_details"/>
 
     <fragment
         android:id="@+id/createLoanFragment"
@@ -97,11 +86,6 @@
             android:id="@+id/action_createLoanFragment_to_resultFragment"
             app:destination="@id/resultFragment"
             app:popUpTo="@+id/createLoanFragment"
-            app:popUpToInclusive="true" />
-        <action
-            android:id="@+id/action_createLoanFragment_to_personalAreaFragment"
-            app:destination="@id/personalAreaFragment"
-            app:popUpTo="@id/main_graph"
             app:popUpToInclusive="true" />
     </fragment>
 

@@ -21,6 +21,7 @@ import javax.inject.Inject
 
 interface LoanDetailsView : BaseView {
     fun showLoanDetails(loan: Loan)
+    fun navigateBack()
     fun navigateTo(id: Int)
     fun showError(throwable: Throwable)
     fun startLoading()
@@ -122,6 +123,10 @@ class LoanDetailsFragment : Fragment(), LoanDetailsView {
                 getString(R.string.registered)
             )
         }
+    }
+
+    override fun navigateBack() {
+        findNavController().popBackStack()
     }
 
     override fun navigateTo(id: Int) {

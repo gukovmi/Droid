@@ -63,7 +63,7 @@ class LoginPresenterImpl @Inject constructor(
     }
 
     override fun returnToPreviousScreen() {
-        view?.navigateTo(R.id.action_loginFragment_to_registrationFragment)
+        view?.navigateBack()
     }
 
     override fun showHelpDialog() {
