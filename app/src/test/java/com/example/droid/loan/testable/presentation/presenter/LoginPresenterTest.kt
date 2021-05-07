@@ -153,11 +153,9 @@ class LoginPresenterTest {
 
     @Test
     fun `return to previous screen EXPECT view navigate to previous screen`() {
-        val actionId = R.id.action_loginFragment_to_registrationFragment
-
         presenter.returnToPreviousScreen()
 
-        verify(view).navigateTo(actionId)
+        verify(view).navigateBack()
     }
 
     @Test

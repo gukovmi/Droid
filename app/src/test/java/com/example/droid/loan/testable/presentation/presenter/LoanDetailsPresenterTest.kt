@@ -144,11 +144,9 @@ class LoanDetailsPresenterTest {
 
     @Test
     fun `return to previous screen EXPECT view navigate to previous screen`() {
-        val actionId = R.id.action_loanDetailsFragment_to_personalAreaFragment
-
         presenter.returnToPreviousScreen()
 
-        verify(view).navigateTo(actionId)
+        verify(view).navigateBack()
     }
 
     @Test
