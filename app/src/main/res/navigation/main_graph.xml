@@ -72,7 +72,7 @@
         android:id="@+id/loanDetailsFragment"
         android:name="com.example.droid.loan.ui.fragment.LoanDetailsFragment"
         android:label="fragment_loan_details"
-        tools:layout="@layout/fragment_loan_details"/>
+        tools:layout="@layout/fragment_loan_details" />
 
     <fragment
         android:id="@+id/createLoanFragment"

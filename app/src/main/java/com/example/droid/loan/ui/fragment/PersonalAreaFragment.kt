@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.droid.R
 import com.example.droid.loan.App
 import com.example.droid.loan.domain.entity.Loan
-import com.example.droid.loan.presentation.presenter.PersonalAreaPresenterImpl
+import com.example.droid.loan.presentation.presenter.PersonalAreaPresenter
 import com.example.droid.loan.ui.adapter.PersonalAreaAdapter
 import com.example.droid.loan.ui.base.BaseView
 import com.example.droid.loan.ui.converter.OffsetDateTimeConverter
@@ -34,7 +34,7 @@ interface PersonalAreaView : BaseView {
 
 class PersonalAreaFragment : Fragment(), PersonalAreaView {
     @Inject
-    lateinit var presenter: PersonalAreaPresenterImpl
+    lateinit var presenter: PersonalAreaPresenter
     private lateinit var throwableConverter: ThrowableConverter
     private lateinit var offsetDateTimeConverter: OffsetDateTimeConverter
     private lateinit var personalAreaAdapter: PersonalAreaAdapter

@@ -1,6 +1,8 @@
 package com.example.droid.loan.data.network.api
 
-import com.example.droid.loan.data.model.*
+import com.example.droid.loan.data.model.LoanConditionsModel
+import com.example.droid.loan.data.model.LoanModel
+import com.example.droid.loan.data.model.LoanRequestModel
 import io.reactivex.Single
 import retrofit2.http.*
 

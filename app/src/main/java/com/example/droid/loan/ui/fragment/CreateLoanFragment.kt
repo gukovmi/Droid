@@ -11,10 +11,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.droid.R
 import com.example.droid.loan.App
 import com.example.droid.loan.domain.entity.LoanConditions
-import com.example.droid.loan.presentation.presenter.CreateLoanPresenterImpl
+import com.example.droid.loan.presentation.presenter.CreateLoanPresenter
 import com.example.droid.loan.ui.base.BaseView
 import com.example.droid.loan.ui.converter.ThrowableConverter
-import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.fragment_create_loan.*
 import javax.inject.Inject
 
@@ -34,7 +33,7 @@ interface CreateLoanView : BaseView {
 
 class CreateLoanFragment : Fragment(), CreateLoanView {
     @Inject
-    lateinit var presenter: CreateLoanPresenterImpl
+    lateinit var presenter: CreateLoanPresenter
 
     private lateinit var throwableConverter: ThrowableConverter
 
@@ -64,10 +63,20 @@ class CreateLoanFragment : Fragment(), CreateLoanView {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        firstNameCreateEditText?.let { outState.putString("firstName", it.editText?.text.toString()) }
+        firstNameCreateEditText?.let {
+            outState.putString(
+                "firstName",
+                it.editText?.text.toString()
+            )
+        }
         lastNameCreateEditText?.let { outState.putString("lastName", it.editText?.text.toString()) }
         amountCreateEditText?.let { outState.putString("amount", it.editText?.text.toString()) }
-        phoneNumberCreateEditText?.let { outState.putString("phoneNumber", it.editText?.text.toString()) }
+        phoneNumberCreateEditText?.let {
+            outState.putString(
+                "phoneNumber",
+                it.editText?.text.toString()
+            )
+        }
     }
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {

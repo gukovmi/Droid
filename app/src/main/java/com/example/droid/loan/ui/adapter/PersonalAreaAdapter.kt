@@ -9,8 +9,8 @@ import com.example.droid.R
 import com.example.droid.loan.domain.entity.Loan
 import com.example.droid.loan.domain.entity.State
 import com.example.droid.loan.ui.converter.OffsetDateTimeConverter
-import kotlinx.android.synthetic.main.item_loan.view.*
 import kotlinx.android.synthetic.main.item_header_personal_area.view.*
+import kotlinx.android.synthetic.main.item_loan.view.*
 
 typealias OnLoanItemClick = (Loan) -> Unit
 typealias OnButtonClick = () -> Unit
@@ -84,7 +84,8 @@ class PersonalAreaAdapter(
         when (viewType) {
             HEADER_VIEW_TYPE_CODE -> {
                 val view =
-                    LayoutInflater.from(context).inflate(R.layout.item_header_personal_area, parent, false)
+                    LayoutInflater.from(context)
+                        .inflate(R.layout.item_header_personal_area, parent, false)
                 HeaderViewHolder(view)
             }
             LOAN_VIEW_TYPE_CODE -> {

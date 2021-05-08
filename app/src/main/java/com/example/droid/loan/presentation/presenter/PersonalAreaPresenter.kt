@@ -12,19 +12,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-interface PersonalAreaPresenter {
-    fun getLoanConditions()
-    fun getLoans()
-    fun updateLoans()
-    fun getName(): String
-    fun getHelpFirstTime()
-    fun getLoanDetails(id: Long)
-    fun setLanguage(language: String)
-    fun logout()
-    fun showHelpDialog()
-}
-
-class PersonalAreaPresenterImpl @Inject constructor(
+class PersonalAreaPresenter @Inject constructor(
     private val getLoansUseCase: GetLoansUseCase,
     private val updateLoansUseCase: UpdateLoansUseCase,
     private val getLoansConditionsUseCase: GetLoanConditionsUseCase,
@@ -34,8 +22,8 @@ class PersonalAreaPresenterImpl @Inject constructor(
     private val writeInstructionWasShownUseCase: WriteInstructionWasShownUseCase,
     private val writeLanguageUseCase: WriteLanguageUseCase,
     private val readLanguageUseCase: ReadLanguageUseCase
-) : PersonalAreaPresenter, BasePresenter<PersonalAreaView>() {
-    override fun getLoanConditions() {
+) : BasePresenter<PersonalAreaView>() {
+    fun getLoanConditions() {
         view?.startLoading()
         getLoansConditionsUseCase(readTokenUseCase())
             .subscribeOn(Schedulers.io())
@@ -58,7 +46,7 @@ class PersonalAreaPresenterImpl @Inject constructor(
             }).untilDestroy()
     }
 
-    override fun getLoans() {
+    fun getLoans() {
         view?.startLoading()
         getLoansUseCase(readTokenUseCase())
             .subscribeOn(Schedulers.io())
@@ -72,7 +60,7 @@ class PersonalAreaPresenterImpl @Inject constructor(
             }).untilDestroy()
     }
 
-    override fun updateLoans() {
+    fun updateLoans() {
         view?.startLoading()
         updateLoansUseCase(readTokenUseCase())
             .subscribeOn(Schedulers.io())
@@ -86,17 +74,17 @@ class PersonalAreaPresenterImpl @Inject constructor(
             }).untilDestroy()
     }
 
-    override fun getName(): String =
+    fun getName(): String =
         readNameUseCase()
 
-    override fun getHelpFirstTime() {
+    fun getHelpFirstTime() {
         if (!readInstructionWasShownUseCase()) {
             writeInstructionWasShownUseCase()
             view?.navigateTo(R.id.helpDialogFragment)
         }
     }
 
-    override fun getLoanDetails(id: Long) {
+    fun getLoanDetails(id: Long) {
         val bundle: Bundle = Bundle().apply {
             putLong(
                 "loanId",
@@ -109,18 +97,18 @@ class PersonalAreaPresenterImpl @Inject constructor(
         )
     }
 
-    override fun setLanguage(language: String) {
+    fun setLanguage(language: String) {
         if (readLanguageUseCase() != language) {
             writeLanguageUseCase(language)
             view?.recreateRequireActivity()
         }
     }
 
-    override fun logout() {
+    fun logout() {
         view?.navigateTo(R.id.action_personalAreaFragment_to_logoutDialogFragment)
     }
 
-    override fun showHelpDialog() {
+    fun showHelpDialog() {
         view?.navigateTo(R.id.helpDialogFragment)
     }
 }

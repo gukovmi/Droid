@@ -3,7 +3,7 @@ package com.example.droid.loan.presentation.presenter
 import android.os.Bundle
 import com.example.droid.R
 import com.example.droid.loan.domain.entity.Auth
-import com.example.droid.loan.domain.usecase.*
+import com.example.droid.loan.domain.usecase.FieldsIsNotEmptyUseCase
 import com.example.droid.loan.domain.usecase.auth.LoginUseCase
 import com.example.droid.loan.domain.usecase.info.ReadLanguageUseCase
 import com.example.droid.loan.domain.usecase.info.WriteLanguageUseCase
@@ -15,22 +15,15 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-interface LoginPresenter {
-    fun login(name: String, password: String)
-    fun setLanguage(language: String)
-    fun returnToPreviousScreen()
-    fun showHelpDialog()
-}
-
-class LoginPresenterImpl @Inject constructor(
+class LoginPresenter @Inject constructor(
     private val loginUseCase: LoginUseCase,
     private val writeTokenUseCase: WriteTokenUseCase,
     private val writeNameUseCase: WriteNameUseCase,
     private val fieldsIsNotEmptyUseCase: FieldsIsNotEmptyUseCase,
     private val writeLanguageUseCase: WriteLanguageUseCase,
     private val readLanguageUseCase: ReadLanguageUseCase
-) : LoginPresenter, BasePresenter<LoginView>() {
-    override fun login(name: String, password: String) {
+) : BasePresenter<LoginView>() {
+    fun login(name: String, password: String) {
         if (fieldsIsNotEmptyUseCase(listOf(name, password))) {
             val auth =
                 Auth(name, password)
@@ -55,18 +48,18 @@ class LoginPresenterImpl @Inject constructor(
         } else view?.showEmptyFieldsWarning()
     }
 
-    override fun setLanguage(language: String) {
+    fun setLanguage(language: String) {
         if (readLanguageUseCase() != language) {
             writeLanguageUseCase(language)
             view?.recreateRequireActivity()
         }
     }
 
-    override fun returnToPreviousScreen() {
+    fun returnToPreviousScreen() {
         view?.navigateBack()
     }
 
-    override fun showHelpDialog() {
+    fun showHelpDialog() {
         view?.navigateTo(R.id.helpDialogFragment)
     }
 }

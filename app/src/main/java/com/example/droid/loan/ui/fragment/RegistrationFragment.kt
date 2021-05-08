@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.droid.R
 import com.example.droid.loan.App
-import com.example.droid.loan.presentation.presenter.RegistrationPresenterImpl
+import com.example.droid.loan.presentation.presenter.RegistrationPresenter
 import com.example.droid.loan.ui.base.BaseView
 import com.example.droid.loan.ui.converter.ThrowableConverter
 import kotlinx.android.synthetic.main.fragment_registration.*
@@ -28,7 +28,7 @@ interface RegistrationView : BaseView {
 
 class RegistrationFragment : Fragment(), RegistrationView {
     @Inject
-    lateinit var presenter: RegistrationPresenterImpl
+    lateinit var presenter: RegistrationPresenter
     private lateinit var throwableConverter: ThrowableConverter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,7 +53,12 @@ class RegistrationFragment : Fragment(), RegistrationView {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         nameRegistrationEditText?.let { outState.putString("name", it.editText?.text.toString()) }
-        passwordRegistrationEditText?.let { outState.putString("password", it.editText?.text.toString()) }
+        passwordRegistrationEditText?.let {
+            outState.putString(
+                "password",
+                it.editText?.text.toString()
+            )
+        }
     }
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {

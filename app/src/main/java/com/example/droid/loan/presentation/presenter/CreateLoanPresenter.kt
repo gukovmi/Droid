@@ -4,7 +4,8 @@ import android.os.Bundle
 import com.example.droid.R
 import com.example.droid.loan.domain.entity.LoanConditions
 import com.example.droid.loan.domain.entity.LoanRequest
-import com.example.droid.loan.domain.usecase.*
+import com.example.droid.loan.domain.usecase.AmountIsValidUseCase
+import com.example.droid.loan.domain.usecase.FieldsIsNotEmptyUseCase
 import com.example.droid.loan.domain.usecase.info.ReadLanguageUseCase
 import com.example.droid.loan.domain.usecase.info.ReadTokenUseCase
 import com.example.droid.loan.domain.usecase.info.WriteLanguageUseCase
@@ -15,40 +16,25 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-interface CreateLoanPresenter {
-    fun setLoanConditions(loanConditions: LoanConditions)
-    fun showLoanConditions()
-    fun createLoan(
-        amount: String,
-        firstName: String,
-        lastName: String,
-        phoneNumber: String
-    )
-
-    fun setLanguage(language: String)
-    fun returnToPreviousScreen()
-    fun showHelpDialog()
-}
-
-class CreateLoanPresenterImpl @Inject constructor(
+class CreateLoanPresenter @Inject constructor(
     private val readTokenUseCase: ReadTokenUseCase,
     private val createLoanUseCase: CreateLoanUseCase,
     private val amountIsValidUseCase: AmountIsValidUseCase,
     private val fieldsIsNotEmptyUseCase: FieldsIsNotEmptyUseCase,
     private val writeLanguageUseCase: WriteLanguageUseCase,
     private val readLanguageUseCase: ReadLanguageUseCase
-) : CreateLoanPresenter, BasePresenter<CreateLoanView>() {
+) : BasePresenter<CreateLoanView>() {
     private lateinit var loanConditions: LoanConditions
 
-    override fun setLoanConditions(loanConditions: LoanConditions) {
+    fun setLoanConditions(loanConditions: LoanConditions) {
         this.loanConditions = loanConditions
     }
 
-    override fun showLoanConditions() {
+    fun showLoanConditions() {
         view?.showLoanConditions(loanConditions)
     }
 
-    override fun createLoan(
+    fun createLoan(
         amount: String,
         firstName: String,
         lastName: String,
@@ -96,18 +82,18 @@ class CreateLoanPresenterImpl @Inject constructor(
             }).untilDestroy()
     }
 
-    override fun setLanguage(language: String) {
+    fun setLanguage(language: String) {
         if (readLanguageUseCase() != language) {
             writeLanguageUseCase(language)
             view?.recreateRequireActivity()
         }
     }
 
-    override fun returnToPreviousScreen() {
+    fun returnToPreviousScreen() {
         view?.navigateBack()
     }
 
-    override fun showHelpDialog() {
+    fun showHelpDialog() {
         view?.navigateTo(R.id.helpDialogFragment)
     }
 }

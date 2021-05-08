@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.droid.R
 import com.example.droid.loan.App
-import com.example.droid.loan.presentation.presenter.StartPresenterImpl
+import com.example.droid.loan.presentation.presenter.StartPresenter
 import com.example.droid.loan.ui.base.BaseView
 import javax.inject.Inject
 
@@ -18,7 +18,7 @@ interface StartView : BaseView {
 
 class StartFragment : Fragment(), StartView {
     @Inject
-    lateinit var presenter: StartPresenterImpl
+    lateinit var presenter: StartPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

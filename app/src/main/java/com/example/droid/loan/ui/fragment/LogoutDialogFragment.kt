@@ -9,7 +9,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.navigation.fragment.findNavController
 import com.example.droid.R
 import com.example.droid.loan.App
-import com.example.droid.loan.presentation.presenter.LogoutPresenterImpl
+import com.example.droid.loan.presentation.presenter.LogoutPresenter
 import com.example.droid.loan.ui.base.BaseView
 import com.example.droid.loan.ui.converter.ThrowableConverter
 import kotlinx.android.synthetic.main.fragment_logout_dialog.*
@@ -23,7 +23,7 @@ interface LogoutView : BaseView {
 
 class LogoutDialogFragment : DialogFragment(), LogoutView {
     @Inject
-    lateinit var presenter: LogoutPresenterImpl
+    lateinit var presenter: LogoutPresenter
     private lateinit var throwableConverter: ThrowableConverter
 
     override fun onCreate(savedInstanceState: Bundle?) {

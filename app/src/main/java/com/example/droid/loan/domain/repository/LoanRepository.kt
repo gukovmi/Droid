@@ -1,6 +1,8 @@
 package com.example.droid.loan.domain.repository
 
-import com.example.droid.loan.domain.entity.*
+import com.example.droid.loan.domain.entity.Loan
+import com.example.droid.loan.domain.entity.LoanConditions
+import com.example.droid.loan.domain.entity.LoanRequest
 import io.reactivex.Completable
 import io.reactivex.Single
 

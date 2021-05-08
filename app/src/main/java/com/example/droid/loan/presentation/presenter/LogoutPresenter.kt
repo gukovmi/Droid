@@ -1,24 +1,19 @@
 package com.example.droid.loan.presentation.presenter
 
 import com.example.droid.R
-import com.example.droid.loan.domain.usecase.loan.ClearLoansUseCase
 import com.example.droid.loan.domain.usecase.info.WriteTokenUseCase
+import com.example.droid.loan.domain.usecase.loan.ClearLoansUseCase
 import com.example.droid.loan.presentation.base.BasePresenter
 import com.example.droid.loan.ui.fragment.LogoutView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-interface LogoutPresenter {
-    fun logout()
-    fun cancel()
-}
-
-class LogoutPresenterImpl @Inject constructor(
+class LogoutPresenter @Inject constructor(
     private val clearLoansUseCase: ClearLoansUseCase,
     private val writeTokenUseCase: WriteTokenUseCase
-) : LogoutPresenter, BasePresenter<LogoutView>() {
-    override fun logout() {
+) : BasePresenter<LogoutView>() {
+    fun logout() {
         clearLoansUseCase()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -33,7 +28,7 @@ class LogoutPresenterImpl @Inject constructor(
             ).untilDestroy()
     }
 
-    override fun cancel() {
+    fun cancel() {
         view?.returnToPreviousScreen()
     }
 }

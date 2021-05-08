@@ -10,10 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.droid.R
 import com.example.droid.loan.App
-import com.example.droid.loan.presentation.presenter.LoginPresenterImpl
+import com.example.droid.loan.presentation.presenter.LoginPresenter
 import com.example.droid.loan.ui.base.BaseView
 import com.example.droid.loan.ui.converter.ThrowableConverter
-import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.fragment_login.*
 import javax.inject.Inject
 
@@ -30,7 +29,7 @@ interface LoginView : BaseView {
 
 class LoginFragment : Fragment(), LoginView {
     @Inject
-    lateinit var presenter: LoginPresenterImpl
+    lateinit var presenter: LoginPresenter
     private lateinit var throwableConverter: ThrowableConverter
 
     override fun onCreateView(
@@ -55,7 +54,7 @@ class LoginFragment : Fragment(), LoginView {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         nameLoginEditText?.let { outState.putString("name", it.editText?.text.toString()) }
-        passwordLoginEditText?.let{ outState.putString("password", it.editText?.text.toString()) }
+        passwordLoginEditText?.let { outState.putString("password", it.editText?.text.toString()) }
     }
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {

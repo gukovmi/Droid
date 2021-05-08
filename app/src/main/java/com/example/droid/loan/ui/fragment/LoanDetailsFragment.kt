@@ -12,7 +12,7 @@ import com.example.droid.R
 import com.example.droid.loan.App
 import com.example.droid.loan.domain.entity.Loan
 import com.example.droid.loan.domain.entity.State
-import com.example.droid.loan.presentation.presenter.LoanDetailsPresenterImpl
+import com.example.droid.loan.presentation.presenter.LoanDetailsPresenter
 import com.example.droid.loan.ui.base.BaseView
 import com.example.droid.loan.ui.converter.OffsetDateTimeConverter
 import com.example.droid.loan.ui.converter.ThrowableConverter
@@ -31,7 +31,7 @@ interface LoanDetailsView : BaseView {
 
 class LoanDetailsFragment : Fragment(), LoanDetailsView {
     @Inject
-    lateinit var presenter: LoanDetailsPresenterImpl
+    lateinit var presenter: LoanDetailsPresenter
     private lateinit var throwableConverter: ThrowableConverter
     private lateinit var offsetDateTimeConverter: OffsetDateTimeConverter
 
