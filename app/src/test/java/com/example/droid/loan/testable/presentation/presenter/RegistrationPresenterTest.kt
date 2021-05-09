@@ -8,7 +8,7 @@ import com.example.droid.loan.domain.usecase.FieldsIsNotEmptyUseCase
 import com.example.droid.loan.domain.usecase.info.ReadLanguageUseCase
 import com.example.droid.loan.domain.usecase.auth.RegistrationUseCase
 import com.example.droid.loan.domain.usecase.info.WriteLanguageUseCase
-import com.example.droid.loan.presentation.presenter.RegistrationPresenterImpl
+import com.example.droid.loan.presentation.presenter.RegistrationPresenter
 import com.example.droid.loan.testrule.SchedulersTestRule
 import com.example.droid.loan.ui.fragment.RegistrationView
 import io.reactivex.Single
@@ -40,12 +40,12 @@ class RegistrationPresenterTest {
 
     @Mock
     lateinit var view: RegistrationView
-    private lateinit var presenter: RegistrationPresenterImpl
+    private lateinit var presenter: RegistrationPresenter
     private fun <T> any(type: Class<T>): T = Mockito.any<T>(type)
 
     @Before
     fun onSetup() {
-        presenter = RegistrationPresenterImpl(
+        presenter = RegistrationPresenter(
             registrationUseCase,
             fieldsIsNotEmptyUseCase,
             writeLanguageUseCase,

@@ -9,7 +9,7 @@ import com.example.droid.loan.domain.usecase.info.*
 import com.example.droid.loan.domain.usecase.loan.GetLoanConditionsUseCase
 import com.example.droid.loan.domain.usecase.loan.GetLoansUseCase
 import com.example.droid.loan.domain.usecase.loan.UpdateLoansUseCase
-import com.example.droid.loan.presentation.presenter.PersonalAreaPresenterImpl
+import com.example.droid.loan.presentation.presenter.PersonalAreaPresenter
 import com.example.droid.loan.testrule.SchedulersTestRule
 import com.example.droid.loan.ui.fragment.PersonalAreaView
 import io.reactivex.Single
@@ -60,7 +60,7 @@ class PersonalAreaPresenterTest {
 
     @Mock
     lateinit var view: PersonalAreaView
-    private lateinit var presenter: PersonalAreaPresenterImpl
+    private lateinit var presenter: PersonalAreaPresenter
     private fun <T> any(type: Class<T>): T = Mockito.any<T>(type)
     private val token = "321321321321321"
     private val loan = Loan(
@@ -84,7 +84,7 @@ class PersonalAreaPresenterTest {
 
     @Before
     fun onSetup() {
-        presenter = PersonalAreaPresenterImpl(
+        presenter = PersonalAreaPresenter(
             getLoansUseCase,
             updateLoansUseCase,
             getLoansConditionsUseCase,

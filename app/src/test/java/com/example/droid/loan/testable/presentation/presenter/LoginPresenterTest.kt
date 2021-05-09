@@ -9,7 +9,7 @@ import com.example.droid.loan.domain.usecase.info.ReadLanguageUseCase
 import com.example.droid.loan.domain.usecase.info.WriteLanguageUseCase
 import com.example.droid.loan.domain.usecase.info.WriteNameUseCase
 import com.example.droid.loan.domain.usecase.info.WriteTokenUseCase
-import com.example.droid.loan.presentation.presenter.LoginPresenterImpl
+import com.example.droid.loan.presentation.presenter.LoginPresenter
 import com.example.droid.loan.testrule.SchedulersTestRule
 import com.example.droid.loan.ui.fragment.LoginView
 import io.reactivex.Single
@@ -47,12 +47,12 @@ class LoginPresenterTest {
 
     @Mock
     lateinit var view: LoginView
-    private lateinit var presenter: LoginPresenterImpl
+    private lateinit var presenter: LoginPresenter
     private fun <T> any(type: Class<T>): T = Mockito.any<T>(type)
 
     @Before
     fun onSetup() {
-        presenter = LoginPresenterImpl(
+        presenter = LoginPresenter(
             loginUseCase,
             writeTokenUseCase,
             writeNameUseCase,

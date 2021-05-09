@@ -7,7 +7,7 @@ import com.example.droid.loan.domain.usecase.loan.GetLoanByIdUseCase
 import com.example.droid.loan.domain.usecase.info.ReadLanguageUseCase
 import com.example.droid.loan.domain.usecase.info.ReadTokenUseCase
 import com.example.droid.loan.domain.usecase.info.WriteLanguageUseCase
-import com.example.droid.loan.presentation.presenter.LoanDetailsPresenterImpl
+import com.example.droid.loan.presentation.presenter.LoanDetailsPresenter
 import com.example.droid.loan.testrule.SchedulersTestRule
 import com.example.droid.loan.ui.fragment.LoanDetailsView
 import io.reactivex.Single
@@ -41,7 +41,7 @@ class LoanDetailsPresenterTest {
 
     @Mock
     lateinit var view: LoanDetailsView
-    private lateinit var presenter: LoanDetailsPresenterImpl
+    private lateinit var presenter: LoanDetailsPresenter
     private fun <T> any(type: Class<T>): T = Mockito.any<T>(type)
     private val token = "321312321321321"
     private val loan = Loan(
@@ -58,7 +58,7 @@ class LoanDetailsPresenterTest {
 
     @Before
     fun onSetup() {
-        presenter = LoanDetailsPresenterImpl(
+        presenter = LoanDetailsPresenter(
             readTokenUseCase,
             getLoanByIdUseCase,
             writeLanguageUseCase,

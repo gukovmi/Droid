@@ -3,7 +3,7 @@ package com.example.droid.loan.testable.presentation.presenter
 import com.example.droid.R
 import com.example.droid.loan.domain.usecase.loan.ClearLoansUseCase
 import com.example.droid.loan.domain.usecase.info.WriteTokenUseCase
-import com.example.droid.loan.presentation.presenter.LogoutPresenterImpl
+import com.example.droid.loan.presentation.presenter.LogoutPresenter
 import com.example.droid.loan.testrule.SchedulersTestRule
 import com.example.droid.loan.ui.fragment.LogoutView
 import io.reactivex.Completable
@@ -32,12 +32,12 @@ class LogoutPresenterTest {
 
     @Mock
     lateinit var view: LogoutView
-    private lateinit var presenter: LogoutPresenterImpl
+    private lateinit var presenter: LogoutPresenter
     private fun <T> any(type: Class<T>): T = Mockito.any<T>(type)
 
     @Before
     fun onSetup() {
-        presenter = LogoutPresenterImpl(
+        presenter = LogoutPresenter(
             clearLoansUseCase,
             writeTokenUseCase
         )

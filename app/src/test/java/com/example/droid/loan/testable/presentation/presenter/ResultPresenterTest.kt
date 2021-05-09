@@ -3,7 +3,7 @@ package com.example.droid.loan.testable.presentation.presenter
 import com.example.droid.R
 import com.example.droid.loan.domain.usecase.info.ReadLanguageUseCase
 import com.example.droid.loan.domain.usecase.info.WriteLanguageUseCase
-import com.example.droid.loan.presentation.presenter.ResultPresenterImpl
+import com.example.droid.loan.presentation.presenter.ResultPresenter
 import com.example.droid.loan.ui.fragment.ResultView
 import org.junit.Before
 import org.junit.Test
@@ -25,11 +25,11 @@ class ResultPresenterTest {
 
     @Mock
     lateinit var readLanguageUseCase: ReadLanguageUseCase
-    private lateinit var presenter: ResultPresenterImpl
+    private lateinit var presenter: ResultPresenter
 
     @Before
     fun onSetup() {
-        presenter = ResultPresenterImpl(
+        presenter = ResultPresenter(
             writeLanguageUseCase,
             readLanguageUseCase
         )

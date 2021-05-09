@@ -11,7 +11,7 @@ import com.example.droid.loan.domain.usecase.info.ReadLanguageUseCase
 import com.example.droid.loan.domain.usecase.info.ReadTokenUseCase
 import com.example.droid.loan.domain.usecase.info.WriteLanguageUseCase
 import com.example.droid.loan.domain.usecase.loan.CreateLoanUseCase
-import com.example.droid.loan.presentation.presenter.CreateLoanPresenterImpl
+import com.example.droid.loan.presentation.presenter.CreateLoanPresenter
 import com.example.droid.loan.testrule.SchedulersTestRule
 import com.example.droid.loan.ui.fragment.CreateLoanView
 import io.reactivex.Single
@@ -47,7 +47,7 @@ class CreateLoanPresenterTest {
 
     @Mock
     lateinit var view: CreateLoanView
-    private lateinit var presenter: CreateLoanPresenterImpl
+    private lateinit var presenter: CreateLoanPresenter
     private val loanConditions =
         LoanConditions(
             period = 12,
@@ -71,7 +71,7 @@ class CreateLoanPresenterTest {
 
     @Before
     fun onSetup() {
-        presenter = CreateLoanPresenterImpl(
+        presenter = CreateLoanPresenter(
             readTokenUseCase,
             createLoanUseCase,
             amountIsValidUseCase,

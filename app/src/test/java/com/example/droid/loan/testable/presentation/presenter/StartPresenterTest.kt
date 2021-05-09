@@ -2,7 +2,7 @@ package com.example.droid.loan.testable.presentation.presenter
 
 import com.example.droid.R
 import com.example.droid.loan.domain.usecase.info.ReadTokenUseCase
-import com.example.droid.loan.presentation.presenter.StartPresenterImpl
+import com.example.droid.loan.presentation.presenter.StartPresenter
 import com.example.droid.loan.ui.fragment.StartView
 import org.junit.Before
 import org.junit.Test
@@ -19,12 +19,12 @@ class StartPresenterTest {
 
     @Mock
     lateinit var view: StartView
-    private lateinit var presenter: StartPresenterImpl
+    private lateinit var presenter: StartPresenter
 
     @Before
     fun onSetup() {
         presenter =
-            StartPresenterImpl(
+            StartPresenter(
                 readTokenUseCase
             )
     }
